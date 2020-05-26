@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function makeArticle($contents)
 {
     $html = "<article>$contents</article>";
@@ -39,6 +41,7 @@ function makeHtmlShoppingCart($itemsShoppingCart)
 {
     $html = "";
     $htmlItemsShoppingCart = "";
+    $htmlButtonShoppingCart = "";
     $totalePrijs = 0;
 
     try {
@@ -62,10 +65,40 @@ function makeHtmlShoppingCart($itemsShoppingCart)
             $htmlItemsShoppingCart .= makeArticleItemShoppingCart($row);
         }
     }
-    $html .= makeArticleTotalePrijs($totalePrijs);
+    $htmlTotalePrijs = makeArticleTotalePrijs($totalePrijs);
+    $htmlButtonShoppingCart = makeButtonShoppingCart($_SESSION['itemsShoppingCart']);
+
+    $html .= $htmlTotalePrijs;
     $html .= $htmlItemsShoppingCart;
+    $html .= $htmlButtonShoppingCart;
     return $html;
 }
+
+function makeButtonShoppingCart()
+{
+    //make button that uses function removeItemsFromStock()
+    $html =
+    "
+   <form action=removeItemsFromStock() method='post'>
+        <input type=hidden id=itemsShoppingcart name=itemsShoppingcart value=$_SESSION[itemsShoppingcart]>
+        <input type='submit' name=removeItemsFromStock value=Afrekenen>
+    </form>    
+    ";
+    return $html;
+}
+
+function removeItemsFromStock()
+{
+    //make connection to DB
+    //make sql query to get voorraad from the $_SESSION['itemsShoppingcart']
+        //for-loop
+        // $voorraad = $row[ voorraad]
+                // $voorraad -= 1;
+                    //make sql query to set voorraad
+                        // $sqlQuery = set voorraad = $voorraad where productnummer = $row[productnummer]
+    //execute $sqlQuery
+}
+
 function forLoopArray($items, $inputhtml)
 {
     $outputhtml = "<br> Contents of the array : <br>";

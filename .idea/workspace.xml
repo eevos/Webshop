@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="606053b6-a03c-41ab-8523-fe91a1f1729e" name="Default Changelist" comment="" />
+    <list default="true" id="606053b6-a03c-41ab-8523-fe91a1f1729e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
+            <state relative-caret-position="17">
               <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
@@ -53,26 +57,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shoppingCart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/functions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="238">
+              <caret line="14" column="55" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/functions/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/zoekResultaten.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="76" column="44" lean-forward="true" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+            <state relative-caret-position="187">
+              <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="73" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -100,6 +104,9 @@
       <find>gestart</find>
       <find>article</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -147,10 +154,10 @@
         <option value="$PROJECT_DIR$/includes/shoppingcartToevoegenItem.php" />
         <option value="$PROJECT_DIR$/includes/shoppingcartVerwijderenItem.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/functions/functions.php" />
         <option value="$PROJECT_DIR$/shoppingCart.php" />
         <option value="$PROJECT_DIR$/includes/shoppingcartBewerkenItem.php" />
         <option value="$PROJECT_DIR$/includes/zoekResultaten.php" />
+        <option value="$PROJECT_DIR$/functions/functions.php" />
       </list>
     </option>
   </component>
@@ -161,6 +168,7 @@
     <option name="width" value="1008" />
     <option name="height" value="1074" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -193,6 +201,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/images/small" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -325,11 +334,12 @@
       <workItem from="1590081330147" duration="1240000" />
       <workItem from="1590089898689" duration="129000" />
       <workItem from="1590174795460" duration="2388000" />
+      <workItem from="1590485054922" duration="6038000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200505000" />
+    <option name="totallyTimeSpent" value="206543000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -342,9 +352,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4990619" visible="true" weight="0.16275303" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4990619" visible="true" weight="0.16518219" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50093806" side_tool="true" weight="0.17651822" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -356,9 +365,9 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49959514" weight="0.3283582" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.2968491" />
+      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.2968491" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3283582" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.20729685" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50040483" side_tool="true" weight="0.3283582" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -605,22 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
+        <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functions/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shoppingCart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -633,8 +628,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/zoekResultaten.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="76" column="44" lean-forward="true" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+        <state relative-caret-position="187">
+          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="73" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shoppingCart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="55" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
         </state>
       </provider>
     </entry>
