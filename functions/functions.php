@@ -1,5 +1,9 @@
 <?php
-session_start();
+//session_destroy();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+//$_SESSION['test'] = null;
 
 function makeArticle($contents)
 {
@@ -37,12 +41,22 @@ function makeArticleItemShoppingCart($row)
                 </article>";
     return $html;
 }
+if (!isset($_SESSION['afgerekend']))
+{$_SESSION['afgerekend']= null;}
+
 function makeHtmlShoppingCart($itemsShoppingCart)
 {
     $html = "";
     $htmlItemsShoppingCart = "";
     $htmlButtonShoppingCart = "";
+    $htmlButtonEmptyShoppingCart="";
     $totalePrijs = 0;
+    $htmlAfgerekend = null;
+    if ($_SESSION['afgerekend'] == true)
+    {
+        $htmlAfgerekend .= makeArticle("Je hebt afgerekend.");
+        $_SESSION['afgerekend'] = false;
+    }
 
     try {
         $dbh = new PDO(
@@ -66,38 +80,72 @@ function makeHtmlShoppingCart($itemsShoppingCart)
         }
     }
     $htmlTotalePrijs = makeArticleTotalePrijs($totalePrijs);
-    $htmlButtonShoppingCart = makeButtonShoppingCart($_SESSION['itemsShoppingCart']);
+    $htmlButtonShoppingCart = makeButtonShoppingCart();
+    $htmlButtonEmptyShoppingCart = makeButtonEmptyShoppingCart();
 
+    $html.= $htmlAfgerekend;
     $html .= $htmlTotalePrijs;
     $html .= $htmlItemsShoppingCart;
     $html .= $htmlButtonShoppingCart;
+    $html .= $htmlButtonEmptyShoppingCart;
+
     return $html;
 }
+//$_SESSION['itemsShoppingcart'] = [4, 5, 6, 4];
+//echo(makeButtonShoppingCart());
 
 function makeButtonShoppingCart()
 {
-    //make button that uses function removeItemsFromStock()
+    //make button that executes shoppingcartAfrekenen.php
     $html =
     "
-   <form action=removeItemsFromStock() method='post'>
-        <input type=hidden id=itemsShoppingcart name=itemsShoppingcart value=$_SESSION[itemsShoppingcart]>
-        <input type='submit' name=removeItemsFromStock value=Afrekenen>
+   <form action=./includes/shoppingcartAfrekenen.php method='post'>
+        <input type='submit' name=shoppingcartAfrekenen value=shoppingcartAfrekenen>
     </form>    
     ";
     return $html;
 }
 
-function removeItemsFromStock()
+function makeButtonEmptyShoppingCart()
 {
-    //make connection to DB
-    //make sql query to get voorraad from the $_SESSION['itemsShoppingcart']
-        //for-loop
-        // $voorraad = $row[ voorraad]
-                // $voorraad -= 1;
-                    //make sql query to set voorraad
-                        // $sqlQuery = set voorraad = $voorraad where productnummer = $row[productnummer]
-    //execute $sqlQuery
+    //make button that executes shoppingcartBewerkenItem.php
+    $html =
+        "
+   <form action=./includes/shoppingcartBewerkenItem.php method='post'>
+        <input type='submit' name=leegmakenShoppingcart value=leegmakenShoppingcart>
+    </form>    
+    ";
+    return $html;
 }
+
+//function removeItemsFromStock()
+//{
+//    //make connection to DB
+//    try {
+//        $dbh = new PDO(
+//            'mysql:host=localhost;
+//        dbname=webshop',
+//            "root",
+//            "");
+//    } catch (Exception $e) {
+//        echo "Er is iets fout gegaan met de verbinding.";
+//    }
+//    //make sql query to get voorraad from the $_SESSION['itemsShoppingcart']
+//    $dbStatement = $dbh->prepare("SELECT * FROM producten $sqlWhere");
+//    $dbStatement->execute();
+//    $data = $dbStatement;
+//
+//    while ($row = $data->fetch()) {
+//        $html .=
+//            "";
+//    }
+//        //for-loop
+//        // $voorraad = $row[ voorraad]
+//                // $voorraad -= 1;
+//                    //make sql query to set voorraad
+//                        // $sqlQuery = set voorraad = $voorraad where productnummer = $row[productnummer]
+//    //execute $sqlQuery
+//}
 
 function forLoopArray($items, $inputhtml)
 {
