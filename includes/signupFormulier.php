@@ -3,7 +3,7 @@
     <section>
         <article>
         <h1>Sign up</h1>
-        <form action="includes/submitsignup.php" method="post">
+        <form action="includes/signupSubmit.php" method="post">
             <input type="text" name="gebruikersnaam" placeholder="Gebruikersnaam">
             <input type="text" name="voornaam" placeholder="Voornaam">
             <input type="text" name="achternaam" placeholder="Achternaam">

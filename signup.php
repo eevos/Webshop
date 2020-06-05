@@ -1,22 +1,30 @@
 <?php
 include "includes/header.php";
+include "functions/functions.php";
 
-if (empty($_SESSION['gebruikersnaam'])) {
+if (empty($_SESSION['gebruikersnaam']))
+    if (empty($_SESSION['foutmeldingen'])) {
+        $contents = include "includes/signupFormulier.php";
+        makeMainSection(makeArticle(
+            "Signup", $contents
+            )
+        );
+    } else {
+    echo makeLink("signup.php", "Terug naar Signup");
 
-    include "includes/signupFormulier.html";
+        echo makeMainSection(makeArticle(
+                "Foutje!",
+                "Het formulier is niet compleet : "
+                . "<br>" .
+                $_SESSION['foutmeldingen'])
+        );
+        $_SESSION['foutmeldingen'] = null;
+    } else {
 
-} else {
-
-    echo "<main>
-            <section>
-                <article> 
-                    <h1>" .
-                    "Ingelogd" .
-                    "</h1>" .
-                    "Je moet eerst uitloggen om in te kunnen schrijven."
-                . "</article>
-            </section>
-          </main>" ;
+    echo makeMainSection(makeArticle(
+            "Welkom!",
+            "Je bent nu ingelogd. Je moet eerst uitloggen om in te kunnen schrijven.")
+    );
 }
 
 include "includes/footer.html";

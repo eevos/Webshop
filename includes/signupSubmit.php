@@ -1,5 +1,10 @@
 <?php
-//session_start();
+include "../functions/functions.php";
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$_SESSION['foutmeldingen'] = null;
 
 if (isset($_POST['submitsignup'])) {
     require 'connectToDatabase.php';
@@ -64,11 +69,12 @@ if (isset($_POST['submitsignup'])) {
                                 VALUES ('$gebruikersnaam', '$voornaam', 
                                 '$achternaam', '$tussenvoegsel', '$plaats', '$telefoon', '$email', '$wachtwoord');
                     ");
-                echo "Signup is gelukt! Je kunt nu inloggen.";
+                echo makeArticle("Ingeschreven!", "Signup is gelukt! Je kunt nu inloggen.");
                 header("Location: ../login.php");
                 exit();
             } else {
-                echo "<article><ul>" . $foutmeldingen . "</ul></article>";
+                $_SESSION['foutmeldingen'] = $foutmeldingen;
+                header("Location: ../signup.php");
             }
     }
 }

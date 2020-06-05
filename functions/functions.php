@@ -5,19 +5,37 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 //$_SESSION['test'] = null;
 
-function makeArticle($contents)
+
+function makeMainSection($contents)
 {
-    $html = "<article>$contents</article>";
+    $html = "<main><section>$contents</section></main>";
     return $html;
 }
+
+function makeArticle($title, $contents)
+{
+    $html =
+        "<article>
+            <h1>$title</h1>
+                <p>$contents</p>
+        </article>";
+    return $html;
+}
+
+function makeLink($location, $omschrijving)
+{
+    $html="<a href=$location>$omschrijving</a> <br>";
+    return $html;
+};
 function displayShoppingCart($contents)
 {
     echo makeArticle($contents);
 }
+
 function makeArticleTotalePrijs($totalePrijs)
 {
     $html =
-"<article class='totalePrijs'>
+        "<article class='totalePrijs'>
             <h2>Totale prijs : </h2>
             <p>De totale prijs van de gekozen producten bedraagt : </p>
             <br>
@@ -25,6 +43,7 @@ function makeArticleTotalePrijs($totalePrijs)
         </article>";
     return $html;
 }
+
 function makeArticleItemShoppingCart($row)
 {
     $html =
@@ -41,19 +60,20 @@ function makeArticleItemShoppingCart($row)
                 </article>";
     return $html;
 }
-if (!isset($_SESSION['afgerekend']))
-{$_SESSION['afgerekend']= null;}
+
+if (!isset($_SESSION['afgerekend'])) {
+    $_SESSION['afgerekend'] = null;
+}
 
 function makeHtmlShoppingCart($itemsShoppingCart)
 {
     $html = "";
     $htmlItemsShoppingCart = "";
     $htmlButtonShoppingCart = "";
-    $htmlButtonEmptyShoppingCart="";
+    $htmlButtonEmptyShoppingCart = "";
     $totalePrijs = 0;
     $htmlAfgerekend = null;
-    if ($_SESSION['afgerekend'] == true)
-    {
+    if ($_SESSION['afgerekend'] == true) {
         $htmlAfgerekend .= makeArticle("Je hebt afgerekend.");
         $_SESSION['afgerekend'] = false;
     }
@@ -83,7 +103,7 @@ function makeHtmlShoppingCart($itemsShoppingCart)
     $htmlButtonShoppingCart = makeButtonShoppingCart();
     $htmlButtonEmptyShoppingCart = makeButtonEmptyShoppingCart();
 
-    $html.= $htmlAfgerekend;
+    $html .= $htmlAfgerekend;
     $html .= $htmlTotalePrijs;
     $html .= $htmlItemsShoppingCart;
     $html .= $htmlButtonShoppingCart;
@@ -91,6 +111,7 @@ function makeHtmlShoppingCart($itemsShoppingCart)
 
     return $html;
 }
+
 //$_SESSION['itemsShoppingcart'] = [4, 5, 6, 4];
 //echo(makeButtonShoppingCart());
 
@@ -98,7 +119,7 @@ function makeButtonShoppingCart()
 {
     //make button that executes shoppingcartAfrekenen.php
     $html =
-    "
+        "
    <form action=./includes/shoppingcartAfrekenen.php method='post'>
         <input type='submit' name=shoppingcartAfrekenen value=shoppingcartAfrekenen>
     </form>    
@@ -156,6 +177,7 @@ function forLoopArray($items, $inputhtml)
     $outputhtml = $inputhtml;
     return $outputhtml;
 }
+
 function removeItemShoppingcart($items, $clickedItem)
 {
     for ($i = 2; $i > -1; $i--) {
