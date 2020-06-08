@@ -5,7 +5,7 @@
 
             <p>
                 <?=
-                $_SESSION['htmlwelkom'];
+                $_SESSION['welkomstBericht'];
                 ?>
             </p>
 

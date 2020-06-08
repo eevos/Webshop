@@ -1,34 +1,38 @@
 <?php
 include "includes/header.php";
 include "functions/functions.php";
-//$_SESSION['itemsShoppingCart'] = array();
 
-?>
+$html = array();
+$html =
+    [
+        ["htmlTitle" => "Welkom!",
+            "htmlContents" => "Het is vandaag " . date("l") . ", " . date("d M Y") . "."],
+        ["htmlTitle" => "Assortiment",
+            "htmlContents" => makeLink("assortiment.php", "Klik hier om te zoeken in het assortiment.")],
+        ["htmlTitle" => "Voorwaarden",
+            "htmlContents" => makeLink("voorwaarden.php", "Klik hier om de voorwaarden te bekijken.")],
+        ["htmlTitle" => "Contact",
+            "htmlContents" => makeLink("contactFormulier.php", "Klik hier om contact te zoeken")],
+        ["htmlTitle" => "Winkelwagen",
+            "htmlContents" => makeLink("shoppingCart.php", "Klik hier om je winkelwagen te bekijken")],
+        ["htmlTitle" => "Account",
+            "htmlContents" => makeLink("signup.php", "Klik hier om een account aan te maken")],
+        ["htmlTitle" => "Inlogpagina",
+            "htmlContents" => makeLink("login.php", "Klik hier om in- of uit te loggen")],
 
-    <main>
-        <aside class="keuzemenu">
-            <?php include "includes/zoekFormulier.php" ?>
-        </aside>
+    ];
 
-        <section class="resultaten">
-            <?php
 
-            if (!empty($_SESSION["zoekResultaten"])) {
+function fillIndex($html){
+$htmlArticles = "";
+for ($i = 0; $i < count($html); $i++) {
+    $htmlArticles .= makeArticle($html[$i]["htmlTitle"], $html[$i]["htmlContents"]);
+}
+return makeMainSection($htmlArticles);
+}
 
-                echo $_SESSION['zoekResultaten'];
-                $_SESSION['zoekResultaten'] ="";
+echo fillIndex($html);
 
-            } elseif (isset($_POST['reset'])){
-//} elseif ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['reset'])){
-                $_SESSION['zoekResultaten'] ="";
-                echo "Welkom! Voer het zoekformulier in om hier zoekresultaten te ontvangen.";
 
-            } else {
 
-                echo "Welkom! Voer het zoekformulier in om hier zoekresultaten te ontvangen.";
-            }
-            ?>
-        </section>
-    </main>
-
-<?php include "includes/footer.php"; ?>
+include "includes/footer.php"; ?>
