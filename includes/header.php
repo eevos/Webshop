@@ -21,7 +21,7 @@
             <li class='home'><a href="index.php">Home</a></li>
             <li class='assortiment'><span>Assortiment &#x25BE</span>
                 <ul class="assortiment-menu">
-                    <li>Kinderfietsen</li>
+                    mer<li>Kinderfietsen</li>
                     <li>Herenfietsen</li>
                     <li>Damesfietsen</li>
                     <li>Elektrische fietsen</li>
