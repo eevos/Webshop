@@ -31,7 +31,7 @@
 
     nav {
         width: 100%;
-        color: white;
+        color: dodgerblue;
         background-color: cornflowerblue;
         padding-bottom: 26px;
 
@@ -92,7 +92,7 @@
     header {
         width: 100%;
         margin-top: 10px;
-        color: white;
+        color: dodgerblue;
         background-color: lightskyblue;
         display: flex;
         justify-content: center;
@@ -175,7 +175,7 @@
 
     nav {
         width: 100%;
-        color: white;
+        color: dodgerblue;
         background-color: cornflowerblue;
         /*padding: 20px 0;*/
         display: flex;
@@ -246,7 +246,7 @@
     header {
         width: 100%;
         margin-top: 50px;
-        color: white;
+        color: dodgerblue;
         background-color: skyblue;
 
         display: flex;

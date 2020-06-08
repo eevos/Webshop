@@ -6,7 +6,8 @@ $html = array();
 $html =
     [
         ["htmlTitle" => "Welkom!",
-            "htmlContents" => "Het is vandaag " . date("l") . ", " . date("d M Y") . "."],
+            "htmlContents" => "Het is vandaag " . date("l") . ", " . date("d M Y") . ". <br>" .
+                            "Zoek door ons assortiment met het zoekscherm of via de knop 'assortiment'."],
         ["htmlTitle" => "Assortiment",
             "htmlContents" => makeLink("assortiment.php", "Klik hier om te zoeken in het assortiment.")],
         ["htmlTitle" => "Voorwaarden",

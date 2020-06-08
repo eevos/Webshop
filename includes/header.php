@@ -21,12 +21,28 @@
             <li class='home'><a href="index.php">Home</a></li>
             <li class='assortiment'><a href="assortiment.php"><span>Assortiment &#x25BE</span></a>
                 <ul class="assortiment-menu">
-                    <li>Overzicht</li>
-                    <li>Kinderfietsen</li>
-                    <li>Herenfietsen</li>
-                    <li>Damesfietsen</li>
-                    <li>Elektrische fietsen</li>
-                    <li>Bakfietsen</li>
+
+                    <form action="./includes/zoekResultaten.php">
+                        <!--                        <input type="hidden" id="categorie" name="categorie" value="kinderfietsen">-->
+                        <input type="submit" name="typeFiets" value="kinderfietsen">
+                        <input type="submit" name="typeFiets" value="damesfietsen">
+                        <input type="submit" name="typeFiets" value="herenfietsen">
+                        <input type="submit" name="typeFiets" value="elektrisch">
+                        <input type="submit" name="typeFiets" value="accessoires">
+                        <input type="submit" name="prijs" value=">500">
+                        <input type="submit" name="prijs" value="<500">
+                        <input type="submit" name="voorraad" value="op voorraad">
+
+
+                    </form>
+
+
+                    <!--                    <li>Overzicht</li>-->
+                    <!--                    <li>Kinderfietsen</li>-->
+                    <!--                    <li>Herenfietsen</li>-->
+                    <!--                    <li>Damesfietsen</li>-->
+                    <!--                    <li>Elektrische fietsen</li>-->
+                    <!--                    <li>Bakfietsen</li>-->
                 </ul>
             </li>
             <li><a href="voorwaarden.php">Voorwaarden</a></li>

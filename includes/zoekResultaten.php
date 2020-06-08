@@ -10,6 +10,9 @@ $voorraad = "";
 $categorie ="";
 $prijs = "";
 
+//In header staat "op voorraad" -> wijzigen naar >0 ivm database.
+if ($_GET['voorraad'] == "op voorraad"){$_GET['voorraad'] = ">0";};
+
 //bouw de statement op basis van het zoekformulier
 if (isset($_GET['typeFiets'])) {
 
