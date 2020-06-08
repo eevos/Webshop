@@ -19,9 +19,14 @@
                 <img src="images/small/logofiets.jpg" alt="logofiets"/>
             </div>
             <li class='home'><a href="index.php">Home</a></li>
-            <li class='assortiment'><span>Assortiment &#x25BE</span>
+            <li class='assortiment'><a href="assortiment.php"><span>Assortiment &#x25BE</span></a>
                 <ul class="assortiment-menu">
+<<<<<<< HEAD
                     mer<li>Kinderfietsen</li>
+=======
+                    <li>Overzicht</li>
+                    <li>Kinderfietsen</li>
+>>>>>>> cleanup
                     <li>Herenfietsen</li>
                     <li>Damesfietsen</li>
                     <li>Elektrische fietsen</li>
@@ -29,7 +34,7 @@
                 </ul>
             </li>
             <li><a href="voorwaarden.php">Voorwaarden</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contactFormulier.php">Contact</a></li>
             <li><a href="shoppingCart.php">Winkelwagen</a></li>
             <li><a href="signup.php">Signup</a></li>
             <li><a href="login.php">

@@ -14,6 +14,6 @@
     <input type="submit" value="zoeken">
 </form>
 
-<form action="./index.php" method="post">
+<form action="./assortiment.php" method="post">
     <input type="submit" name="reset" value="reset">
 </form>

@@ -27,4 +27,4 @@ if (empty($_SESSION['gebruikersnaam']))
     );
 }
 
-include "includes/footer.html";
+include "includes/footer.php";
