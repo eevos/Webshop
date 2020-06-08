@@ -13,7 +13,7 @@ header("Pragma: no-cache");
     <main>
         <section>
             <?php
-            if (!isset($_SESSION['htmlwelkom'])) {
+            if (!isset($_SESSION['welkomstBericht'])) {
                 echo makeArticle("Je bent niet ingelogd. Log in om verder te gaan en je winkelwagen te vullen.");
             } else {
                 if (!empty($_SESSION['itemsShoppingCart'])) {
@@ -22,10 +22,10 @@ header("Pragma: no-cache");
                     $_SESSION['htmlShoppingCart'] = makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
                     echo $_SESSION['htmlShoppingCart'];
                 } else {
-                    echo makeArticle("Je winkelwagentje is nog leeg.");
+                    echo makeArticle("Winkelwagen","Je winkelwagentje is nog leeg.");
                 }
             }
             ?>
         </section>
     </main>
-<?php include "includes/footer.html";
+<?php include "includes/footer.php";

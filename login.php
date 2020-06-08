@@ -1,14 +1,13 @@
 <?php
 include "includes/header.php";
 
-
 if (empty($_SESSION['gebruikersnaam'])) {
 
-    include "includes/loginFormulier.html";
+    include "includes/loginFormulier.php";
 
 } else {
 
     include "includes/logoutFormulier.php";
 }
 
-include "includes/footer.html";
+include "includes/footer.php";

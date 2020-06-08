@@ -8,13 +8,12 @@
 @media only screen and (max-width: 400px ) {
     body {
         background-color: cornflowerblue;
-        color: forestgreen;
+        color: cornflowerblue;
         font-family: Arial Black, Helvetica, sans serif;
     }
 
     .menuheader {
         color: white;
-
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -33,7 +32,7 @@
     nav {
         width: 100%;
         color: white;
-        background-color: seagreen;
+        background-color: cornflowerblue;
         padding-bottom: 26px;
 
         display: flex;
@@ -94,8 +93,7 @@
         width: 100%;
         margin-top: 10px;
         color: white;
-        background-color: darkblue;
-
+        background-color: lightskyblue;
         display: flex;
         justify-content: center;
     }
@@ -149,7 +147,7 @@
         padding: 0px 20px 5px 20px;
     }
     main h1, h2, h3, h4 {
-        border: 2px solid seagreen;
+        border: 2px solid cornflowerblue;
         border-radius: 5px;
         width: 100%;
         margin: 20px 0;
@@ -171,14 +169,14 @@
 @media only screen and (min-width: 401px ) {
     body {
         background-color: aliceblue;
-        color: seagreen;
+        color: cornflowerblue;
         font-family: Arial Black, Helvetica, sans serif;
     }
 
     nav {
         width: 100%;
         color: white;
-        background-color: seagreen;
+        background-color: cornflowerblue;
         /*padding: 20px 0;*/
         display: flex;
         justify-content: center;
@@ -249,7 +247,7 @@
         width: 100%;
         margin-top: 50px;
         color: white;
-        background-color: darkblue;
+        background-color: skyblue;
 
         display: flex;
         justify-content: center;
@@ -362,7 +360,7 @@
     }
 
     main h1, h2, h3, h4 {
-        border: 2px solid seagreen;
+        border: 2px solid cornflowerblue;
         border-radius: 5px;
         width: 100%;
         margin: 20px 0;
