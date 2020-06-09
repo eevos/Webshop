@@ -6,7 +6,7 @@ if (empty($_SESSION['gebruikersnaam']))
     if (empty($_SESSION['foutmeldingen'])) {
         $contents = include "includes/signupFormulier.php";
         makeMainSection(makeArticle(
-            "Signup", $contents
+            "Signup", $contents, null
             )
         );
     } else {
@@ -16,14 +16,16 @@ if (empty($_SESSION['gebruikersnaam']))
                 "Foutje!",
                 "Het formulier is niet compleet : "
                 . "<br>" .
-                $_SESSION['foutmeldingen'])
+                $_SESSION['foutmeldingen'],
+                null)
         );
         $_SESSION['foutmeldingen'] = null;
     } else {
 
     echo makeMainSection(makeArticle(
             "Welkom!",
-            "Je bent nu ingelogd. Je moet eerst uitloggen om in te kunnen schrijven.")
+            "Je bent nu ingelogd. Je moet eerst uitloggen om in te kunnen schrijven.",
+            null)
     );
 }
 

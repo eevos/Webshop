@@ -13,42 +13,29 @@
 
 <div class="menuheader">
     <nav>
-        <p class="menutitle">Menu</p>
+        <p> <a href="" class="menutitle">Menu</a></p>
         <ul class="menucontent">
             <div class='logo'>
-                <img src="images/small/logofiets.jpg" alt="logofiets"/>
+                <img src="images/small/logo.png" alt="logofiets"/>
             </div>
             <li class='home'><a href="index.php">Home</a></li>
             <li class='assortiment'><a href="assortiment.php"><span>Assortiment &#x25BE</span></a>
                 <ul class="assortiment-menu">
-
                     <form action="./includes/zoekResultaten.php">
-                        <!--                        <input type="hidden" id="categorie" name="categorie" value="kinderfietsen">-->
-                        <input type="submit" name="typeFiets" value="kinderfietsen">
-                        <input type="submit" name="typeFiets" value="damesfietsen">
-                        <input type="submit" name="typeFiets" value="herenfietsen">
-                        <input type="submit" name="typeFiets" value="elektrisch">
-                        <input type="submit" name="typeFiets" value="accessoires">
-                        <input type="submit" name="prijs" value=">500">
-                        <input type="submit" name="prijs" value="<500">
-                        <input type="submit" name="voorraad" value="op voorraad">
-
-
+                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="kinderfietsen"></li>
+                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="damesfietsen"></li>
+                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="herenfietsen"></li>
+                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="elektrisch"></li>
+                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="accessoires"></li>
+                        <li><input type="submit" class= "headerbutton" name="prijs" value=">500"></li>
+                        <li><input type="submit" class= "headerbutton" name="prijs" value="<500"></li>
+                        <li><input type="submit" class= "headerbutton" name="voorraad" value="op voorraad"></li>
                     </form>
-
-
-                    <!--                    <li>Overzicht</li>-->
-                    <!--                    <li>Kinderfietsen</li>-->
-                    <!--                    <li>Herenfietsen</li>-->
-                    <!--                    <li>Damesfietsen</li>-->
-                    <!--                    <li>Elektrische fietsen</li>-->
-                    <!--                    <li>Bakfietsen</li>-->
                 </ul>
             </li>
             <li><a href="voorwaarden.php">Voorwaarden</a></li>
             <li><a href="contactFormulier.php">Contact</a></li>
             <li><a href="shoppingCart.php">Winkelwagen</a></li>
-            <li><a href="signup.php">Signup</a></li>
             <li><a href="login.php">
                     <?php
                     if (!isset($_SESSION['gebruikersnaam'])) {
@@ -58,18 +45,21 @@
                     }
                     ?>
                 </a>
-                <!--                <div class="inloggen">-->
-                <!--                    --><?php //include "includes/zoekFormulier.php"; ?>
-                <!--                </div>-->
             </li>
         </ul>
     </nav>
 
     <header>
         <div class='header'>
-            <div class='subscribe'>Subscribe</div>
-
-            <div class='social'>Logo's van Social Media</div>
+            <div class='subscribe'><a href="signup.php">Signup</a></div>
+            <div class='social'>
+                <a href="https://www.w3schools.com/html/html_links.asp">
+                    <img src="./images/small/google.png">
+                </a>
+                <a href="https://www.volkskrant.nl">
+                    <img src="./images/small/fb.png">
+                </a>
+            </div>
         </div>
     </header>
 </div>

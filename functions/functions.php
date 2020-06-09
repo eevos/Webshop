@@ -12,10 +12,10 @@ function makeMainSection($contents)
     return $html;
 }
 
-function makeArticle($title, $contents)
+function makeArticle($title, $contents, $class)
 {
     $html =
-        "<article>
+        "<article class='$class'>
             <h1>$title</h1>
                 <p>$contents</p>
         </article>";
@@ -29,7 +29,7 @@ function makeLink($location, $omschrijving)
 };
 function displayShoppingCart($contents)
 {
-    echo makeArticle($contents);
+    echo makeArticle("Winkelwagen", $contents, null);
 }
 
 function makeArticleTotalePrijs($totalePrijs)
@@ -74,7 +74,7 @@ function makeHtmlShoppingCart($itemsShoppingCart)
     $totalePrijs = 0;
     $htmlAfgerekend = null;
     if ($_SESSION['afgerekend'] == true) {
-        $htmlAfgerekend .= makeArticle("Je hebt afgerekend.");
+        $htmlAfgerekend .= makeArticle("Succes! ", "Je hebt afgerekend.", null);
         $_SESSION['afgerekend'] = false;
     }
 

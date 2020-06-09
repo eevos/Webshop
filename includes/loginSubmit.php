@@ -54,7 +54,7 @@ if (isset($_POST['submitLogin'])) {
             header("Location: ../login.php");
         } else {
             echo "<article>echo: Je hebt een onjuiste gebruikersnaam of wachtwoord ingevoerd.</article>";
-            $htmlwelkom = "htmlwelkom: Je hebt een onjuiste gebruikersnaam of onjuist wachtwoord ingevoerd.";
+            $htmlwelkom = "Je hebt een onjuiste gebruikersnaam of onjuist wachtwoord ingevoerd.";
             $_SESSION['welkomstBericht'] = $htmlwelkom;
             $_SESSION['gebruikersnaam'] = null;
 //            header("Location: ../login.php");

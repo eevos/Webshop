@@ -65,13 +65,13 @@ $_SESSION["zoekResultaten"] = "";
 //maak  html-variabele van dbStatement
 while ($row = $data->fetch()) {
     $html .=
-        "<article> 
+        "<article class='zoekresultaten'> 
             <h2>$row[naam] </h2>
             <img src='./images/$row[afbeelding]' alt='fiets of accessoire'>
             <p>$row[omschrijving]</p>
             <p><strong>$row[prijs]</strong></p> 
             <p>Voorraad:  $row[voorrad]</p>
-                <form action=includes/shoppingcartBewerkenItem.php method='post'>
+                <form action=includes/shoppingcartBewerkenItem.php class='winkelwagenbutton' method='post'>
                     <input type=hidden id=rowNummer name=rowNummer value=$row[nummer]>
                     <input type='submit' name=toevoegenAanShoppingCart value=Toevoegen>
                 </form>

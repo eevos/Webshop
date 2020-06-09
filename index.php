@@ -27,7 +27,7 @@ $html =
 function fillIndex($html){
 $htmlArticles = "";
 for ($i = 0; $i < count($html); $i++) {
-    $htmlArticles .= makeArticle($html[$i]["htmlTitle"], $html[$i]["htmlContents"]);
+    $htmlArticles .= makeArticle($html[$i]["htmlTitle"], $html[$i]["htmlContents"], null);
 }
 return makeMainSection($htmlArticles);
 }
