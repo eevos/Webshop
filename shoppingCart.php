@@ -14,7 +14,9 @@ header("Pragma: no-cache");
         <section>
             <?php
             if (!isset($_SESSION['welkomstBericht'])) {
-                echo makeArticle("Je bent niet ingelogd. Log in om verder te gaan en je winkelwagen te vullen.");
+                echo makeArticle(
+                        "Probleem","Je bent niet ingelogd. Log in om verder te gaan en je winkelwagen te vullen.",
+                        null);
             } else {
                 if (!empty($_SESSION['itemsShoppingCart'])) {
 //                    $_SESSION['test'] = "test";
@@ -22,7 +24,7 @@ header("Pragma: no-cache");
                     $_SESSION['htmlShoppingCart'] = makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
                     echo $_SESSION['htmlShoppingCart'];
                 } else {
-                    echo makeArticle("Winkelwagen","Je winkelwagentje is nog leeg.");
+                    echo makeArticle("Winkelwagen","Je winkelwagentje is nog leeg.", null);
                 }
             }
             ?>

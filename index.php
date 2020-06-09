@@ -6,7 +6,8 @@ $html = array();
 $html =
     [
         ["htmlTitle" => "Welkom!",
-            "htmlContents" => "Het is vandaag " . date("l") . ", " . date("d M Y") . "."],
+            "htmlContents" => "Het is vandaag " . date("l") . ", " . date("d M Y") . ". <br>" .
+                            "Zoek door ons assortiment met het zoekscherm of via de knop 'assortiment'."],
         ["htmlTitle" => "Assortiment",
             "htmlContents" => makeLink("assortiment.php", "Klik hier om te zoeken in het assortiment.")],
         ["htmlTitle" => "Voorwaarden",
@@ -26,7 +27,7 @@ $html =
 function fillIndex($html){
 $htmlArticles = "";
 for ($i = 0; $i < count($html); $i++) {
-    $htmlArticles .= makeArticle($html[$i]["htmlTitle"], $html[$i]["htmlContents"]);
+    $htmlArticles .= makeArticle($html[$i]["htmlTitle"], $html[$i]["htmlContents"], null);
 }
 return makeMainSection($htmlArticles);
 }

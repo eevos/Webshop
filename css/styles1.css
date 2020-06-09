@@ -9,58 +9,56 @@
     body {
         background-color: cornflowerblue;
         color: cornflowerblue;
-        font-family: Arial Black, Helvetica, sans serif;
-    }
-
-    .menuheader {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        /*flex-wrap: nowrap;*/
-    }
-
-    .menutitle {
-        font-weight: bold;
-        font-family: "Arial Black";
-        color: white;
-
-        display: flex;
-        position: fixed;
+        font-family: Arial, Helvetica, sans serif;
     }
 
     nav {
         width: 100%;
-        color: white;
+        color: dodgerblue;
         background-color: cornflowerblue;
         padding-bottom: 26px;
 
         display: flex;
         justify-content: center;
         position: fixed;
+        /*flex-direction: column;*/
     }
-
     .menucontent {
         display: none;
-    }
-
-    nav:hover .menucontent {
-        padding-top: 26px;
-        list-style: none;
-        width: 100%;
-
-        display: flex;
         justify-content: space-around;
-        /*border: 1px solid red;*/
-        align-items: center;
-        position: relative;
         flex-direction: column;
     }
-
-    .menu > span {
+    nav:focus .menucontent, nav:hover .menucontent  {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        /*align-items: center;*/
+        position: relative;
+        list-style: none;
+    }
+    .menucontent > span {  /*menucontent > span ????*/
         z-index: 2;
         position: relative;
         cursor: pointer;
+    }
+
+    .menuheader {
+        /*color: white;*/
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /*flex-wrap: nowrap;*/
+    }
+    .menutitle {
+        font-weight: bold;
+        font-family: "Arial Black";
+        color: white;
+        display: flex;
+        position: fixed;
+
+        /*test, klopt dit?*/
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .assortiment-menu {
@@ -84,20 +82,18 @@
         padding: 0 40px 10px 20px;
         margin: 10px;
     }
-
     .assortiment-menu li:last-of-type {
         border-bottom: none;
     }
-
     header {
         width: 100%;
         margin-top: 10px;
-        color: white;
+        color: dodgerblue;
         background-color: lightskyblue;
+
         display: flex;
         justify-content: center;
     }
-
     .header {
         width: 100%;
         height: 2em;
@@ -107,38 +103,61 @@
         align-items: center;
         margin-top: 26px;
     }
-
+    .headerbutton{
+        background-color: #5995DA;
+        border: none;
+    }
+    .headerbutton:active {
+        color: darkblue;
+    }
     a {
+        color: cornflowerblue;
         text-decoration: none;
     }
 
     a:link, a:hover, a:visited {
-        color: white;
+        color: darkblue;
     }
-
     main {
         width: 100%;
         display: flex;
-        justify-content: center;
+        flex-direction: column ;
+        /*justify-content: center;*/
+        justify-content: space-evenly;
     }
+    aside {
+        order: 1;
+        color: darkblue;
+        padding-left: 2em;
+        margin-bottom: 1em;
+    }
+    footer {
+        margin-top: 1em;
 
+    }
+    footer > article{
+        border: none;
+        margin-top: 0.2em;
+        background-color: aliceblue;
+    }
+    .footer h4 {
+        border: none;
+    }
     section {
-        width: 95%;
+        order: 2;
+        width: 100%;
         height: auto;
-        /*margin: 0 12.5% 0 12.5%;*/
         display: flex;
         justify-content: center;
         flex-flow: row wrap;
         align-items: flex-start;
     }
-
     article {
         background-color: white;
         border: 2px solid lightblue;
-        width: 300px;
-        min-height: 300px;
+        width: 100%;
+        min-height: 10em;
         height: auto;
-        /*max-height: 400px;*/
     }
     article.totalePrijs{
         width: 90%;
@@ -157,27 +176,22 @@
         flex-direction: row;
         align-items: center;
     }
-
-    article {
-        width: 100%;
-        height: 100px;
-    }
 }
 
 /*Desktop styles*/
-
 @media only screen and (min-width: 401px ) {
     body {
         background-color: aliceblue;
         color: cornflowerblue;
-        font-family: Arial Black, Helvetica, sans serif;
+        font-family: Arial, Helvetica, sans serif;
     }
 
     nav {
         width: 100%;
-        color: white;
+        color: dodgerblue;
         background-color: cornflowerblue;
         /*padding: 20px 0;*/
+
         display: flex;
         justify-content: center;
         position: fixed;
@@ -202,7 +216,6 @@
 
     .menuheader {
         color: white;
-
         display: flex;
         flex-direction: column;
         /*flex-wrap: nowrap;*/
@@ -246,7 +259,7 @@
     header {
         width: 100%;
         margin-top: 50px;
-        color: white;
+        color: dodgerblue;
         background-color: skyblue;
 
         display: flex;
@@ -261,6 +274,13 @@
         justify-content: space-around;
         align-items: center;
         margin-top: 26px;
+    }
+    .headerbutton{
+        background-color: #5995DA;
+        border: none;
+    }
+    .headerbutton:active, .headerbutton:hover {
+        color: darkblue;
     }
 
     a {
@@ -277,27 +297,26 @@
 
     main {
         width: 100%;
-
         display: flex;
         justify-content: space-between;
     }
-
     section {
         width: auto;
         height: auto;
-
         display: flex;
         justify-content: center;
         flex-flow: row wrap;
         /*align-items: flex-start;*/
     }
-
     article {
         background-color: white;
         margin: 1%;
+        margin-top: 1.5em;
         border: 2px solid lightblue;
         width: 300px;
-        height: 400px;
+        min-height: 400px;
+        height: auto;
+        max-height: 500px;
         box-shadow: 10px 10px 5px grey;
     }
     article.totalePrijs{
@@ -306,25 +325,35 @@
         height: auto;
         padding: 0px 20px 5px 20px;
     }
+    article.voorwaarden{
+        width: 90%;
+    }
+    article.contactformulier{
+        width: 90%;
+    }
+    p {
+        margin: 1em 1em 1em 1em;
+    }
     .keuzemenu {
         width: 20%;
         min-height: 900px;
         margin: 1%;
         height: auto;
         border: 3px solid cornflowerblue;
-
         /*order: -1;*/
         align-self: flex-start;
-
     }
-
+    form.winkelwagenbutton {
+        border: 1px solid red;
+        background-color: white;
+        padding-left: 40%;
+    }
     .welkom {
         width: 70%;
         height: 100px;
         margin: 1%;
         padding-bottom: 30px;
         /*order: 2;*/
-
         border: 3px solid cornflowerblue;
     }
 

@@ -69,7 +69,7 @@ if (isset($_POST['submitsignup'])) {
                                 VALUES ('$gebruikersnaam', '$voornaam', 
                                 '$achternaam', '$tussenvoegsel', '$plaats', '$telefoon', '$email', '$wachtwoord');
                     ");
-                echo makeArticle("Ingeschreven!", "Signup is gelukt! Je kunt nu inloggen.");
+                echo makeArticle("Ingeschreven!", "Signup is gelukt! Je kunt nu inloggen.", null);
                 header("Location: ../login.php");
                 exit();
             } else {
