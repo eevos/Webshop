@@ -2,6 +2,7 @@
 session_start();
 
 require "connectToDatabase.php";
+include "../functions/functions.php";
 
 //initialize $ declare sql-parts
 $where = "";
@@ -58,28 +59,9 @@ $data = $dbStatement;
 //opruimen $sqlWhere
 $sqlWhere = "";
 
-//declareer en initiëer Session-variabelen
-$html = "";
-$_SESSION["zoekResultaten"] = "";
-
 //maak  html-variabele van dbStatement
-while ($row = $data->fetch()) {
-    $html .=
-        "<article class='zoekresultaten'> 
-            <h2>$row[naam] </h2>
-            <img src='./images/$row[afbeelding]' alt='fiets of accessoire'>
-            <p>$row[omschrijving]</p>
-            <p><strong>$row[prijs]</strong></p> 
-            <p>Voorraad:  $row[voorrad]</p>
-                <form action=includes/shoppingcartBewerkenItem.php class='winkelwagenbutton' method='post'>
-                    <input type=hidden id=rowNummer name=rowNummer value=$row[nummer]>
-                    <input type='submit' name=toevoegenAanShoppingCart value=Toevoegen>
-                </form>
-        </article>";
-
-    $_SESSION['rowNummer'] = $row['nummer'];
-    $_SESSION["zoekResultaten"] = $html;
-}
+$dbData = $data;
+getDataAndShowItems($dbData);
 ?>
 
 <?php

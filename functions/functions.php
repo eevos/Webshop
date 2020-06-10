@@ -24,13 +24,62 @@ function makeArticle($title, $contents, $class)
 
 function makeLink($location, $omschrijving)
 {
-    $html="<a href=$location>$omschrijving</a> <br>";
+    $html = "<a href=$location>$omschrijving</a> <br>";
     return $html;
-};
+}
 function displayShoppingCart($contents)
 {
     echo makeArticle("Winkelwagen", $contents, null);
 }
+function getDataAndShowItems($dbData)
+{
+    $html = "";
+    $_SESSION["zoekResultaten"] = "";
+
+    while ($row = $dbData->fetch()) {
+        $rowNaam = $row['naam'];
+        $rowAfbeelding = $row['afbeelding'];
+        $rowOmschrijving = $row['omschrijving'];
+        $rowPrijs = $row['prijs'];
+        $rowVoorraad = $row['voorrad'];
+        $rowNummer = $row['nummer'];
+
+        $html .=
+            makeArticleItemZoekResultaten($rowNaam, $rowAfbeelding, $rowOmschrijving, $rowPrijs, $rowVoorraad, $rowNummer);
+        $_SESSION['rowNummer'] = $row['nummer'];
+        $_SESSION["zoekResultaten"] = $html;
+    }
+}
+
+function makeArticleItemZoekResultaten($rowNaam, $rowAfbeelding, $rowOmschrijving, $rowPrijs, $rowVoorraad, $rowNummer)
+{
+    if ($rowVoorraad > 0) {
+        $html =
+            "<article class='zoekresultaten'> 
+                <h2>$rowNaam </h2>
+                <img src='./images/$rowAfbeelding' alt='fiets of accessoire'>
+                <p>$rowOmschrijving</p>
+                <p><strong>$rowPrijs</strong></p> 
+                <p>Voorraad:  $rowVoorraad</p>
+                    <form action=includes/shoppingcartBewerkenItem.php class='winkelwagenbutton' method='post'>
+                        <input type=hidden id=rowNummer name=rowNummer value=$rowNummer>
+                        <input type='submit' name=toevoegenAanShoppingCart value=Toevoegen>
+                    </form>
+            </article>";
+    } else {
+        $rowVoorraad = "Niet leverbaar.";
+        $html =
+            "<article class='zoekresultaten'> 
+                <h2>$rowNaam </h2>
+                <img src='./images/$rowAfbeelding' alt='fiets of accessoire'>
+                <p>$rowOmschrijving</p>
+                <p><strong>$rowPrijs</strong></p> 
+                <p>Voorraad:  $rowVoorraad</p>
+            </article>";
+    }
+    return $html;
+}
+
 
 function makeArticleTotalePrijs($totalePrijs)
 {

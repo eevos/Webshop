@@ -344,7 +344,6 @@
         align-self: flex-start;
     }
     form.winkelwagenbutton {
-        border: 1px solid red;
         background-color: white;
         padding-left: 40%;
     }
@@ -402,6 +401,7 @@
 
     footer {
         width: auto;
+        max-height: 200px;
         list-style: none;
 
         display: flex;

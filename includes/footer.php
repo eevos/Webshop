@@ -21,4 +21,9 @@
         <li><a href="login.php">Login</a></li>
         </p>
     </article>
+    <article class="footer">
+        <p>Laatste bestelling:</p>
+<!--        Bestelgeschiedenis?         -->
+
+    </article>
 </footer>
