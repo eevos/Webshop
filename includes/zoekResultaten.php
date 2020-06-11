@@ -14,6 +14,12 @@ $prijs = "";
 //In header staat "op voorraad" -> wijzigen naar >0 ivm database.
 if ($_GET['voorraad'] == "op voorraad"){$_GET['voorraad'] = ">0";};
 
+//Zoek 1 artikel op als klant op "bekijken" heeft geklikt.
+if (isset($_POST['bekijkenItem'])){
+    $nummer =  $_POST['rowNummer'];
+    $sqlWhere = " WHERE nummer = '$nummer'";
+}
+
 //bouw de statement op basis van het zoekformulier
 if (isset($_GET['typeFiets'])) {
 
@@ -62,9 +68,7 @@ $sqlWhere = "";
 //maak  html-variabele van dbStatement
 $dbData = $data;
 getDataAndShowItems($dbData);
-?>
 
-<?php
 header("Location: ../assortiment.php");
 ?>
 

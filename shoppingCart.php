@@ -9,7 +9,6 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 ?>
-    <a class="shoppingCart" href="index.php">Terug naar zoekpagina</a> <br>
     <main>
         <section>
             <?php
@@ -19,8 +18,7 @@ header("Pragma: no-cache");
                         null);
             } else {
                 if (!empty($_SESSION['itemsShoppingCart'])) {
-//                    $_SESSION['test'] = "test";
-//                    echo $_SESSION['test'];
+                    echo makeArticle(null,makeLink("assortiment.php", "Terug naar assortiment"),"button");
                     $_SESSION['htmlShoppingCart'] = makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
                     echo $_SESSION['htmlShoppingCart'];
                 } else {

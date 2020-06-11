@@ -16,7 +16,7 @@
         <p> <a href="" class="menutitle">Menu</a></p>
         <ul class="menucontent">
             <div class='logo'>
-                <img src="images/small/logo.png" alt="logofiets"/>
+                <a href="index.php"><img src="images/small/logo.png" alt="logofiets"/> </a>
             </div>
             <li class='home'><a href="index.php">Home</a></li>
             <li class='assortiment'><a href="assortiment.php"><span>Assortiment &#x25BE</span></a>
@@ -34,7 +34,7 @@
                 </ul>
             </li>
             <li><a href="voorwaarden.php">Voorwaarden</a></li>
-            <li><a href="contactFormulier.php">Contact</a></li>
+            <li><a href="contactFormulier.php">Over ons</a></li>
             <li><a href="shoppingCart.php">Winkelwagen</a></li>
             <li><a href="login.php">
                     <?php

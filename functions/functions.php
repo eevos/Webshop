@@ -14,11 +14,18 @@ function makeMainSection($contents)
 
 function makeArticle($title, $contents, $class)
 {
-    $html =
-        "<article class='$class'>
-            <h1>$title</h1>
+    if ($title == null) {
+        $html =
+            "<article class='$class'>
                 <p>$contents</p>
-        </article>";
+            </article>";
+    } else {
+        $html =
+            "<article class='$class'>
+                <h1>$title</h1>
+                <p>$contents</p>
+            </article>";
+    }
     return $html;
 }
 
@@ -27,10 +34,21 @@ function makeLink($location, $omschrijving)
     $html = "<a href=$location>$omschrijving</a> <br>";
     return $html;
 }
+
+function fillIndex($html)
+{
+    $htmlArticles = "";
+    for ($i = 0; $i < count($html); $i++) {
+        $htmlArticles .= makeArticle($html[$i]["htmlTitle"], $html[$i]["htmlContents"], null);
+    }
+    return makeMainSection($htmlArticles);
+}
+
 function displayShoppingCart($contents)
 {
     echo makeArticle("Winkelwagen", $contents, null);
 }
+
 function getDataAndShowItems($dbData)
 {
     $html = "";
@@ -65,6 +83,10 @@ function makeArticleItemZoekResultaten($rowNaam, $rowAfbeelding, $rowOmschrijvin
                         <input type=hidden id=rowNummer name=rowNummer value=$rowNummer>
                         <input type='submit' name=toevoegenAanShoppingCart value=Toevoegen>
                     </form>
+                    <form action=./includes/zoekResultaten.php class='winkelwagenbutton' method='post'>
+                        <input type=hidden id=rowNummer name=rowNummer value=$rowNummer>
+                        <input type='submit' name=bekijkenItem value=Bekijken>
+                    </form>
             </article>";
     } else {
         $rowVoorraad = "Niet leverbaar.";
@@ -75,8 +97,13 @@ function makeArticleItemZoekResultaten($rowNaam, $rowAfbeelding, $rowOmschrijvin
                 <p>$rowOmschrijving</p>
                 <p><strong>$rowPrijs</strong></p> 
                 <p>Voorraad:  $rowVoorraad</p>
+                    <form action=./includes/zoekResultaten.php class='winkelwagenbutton' method='post'>
+                        <input type=hidden id=rowNummer name=rowNummer value=$rowNummer>
+                        <input type='submit' name=bekijkenItem value=Bekijken>
+                    </form>
             </article>";
     }
+//    $html =
     return $html;
 }
 
@@ -86,9 +113,9 @@ function makeArticleTotalePrijs($totalePrijs)
     $html =
         "<article class='totalePrijs'>
             <h2>Totale prijs : </h2>
-            <p>De totale prijs van de gekozen producten bedraagt : </p>
-            <br>
-            <p>€ $totalePrijs</p>
+            <p>De totale prijs van de gekozen producten bedraagt :
+            <span><strong>€ $totalePrijs</strong></span>
+            </p>
         </article>";
     return $html;
 }
@@ -96,17 +123,16 @@ function makeArticleTotalePrijs($totalePrijs)
 function makeArticleItemShoppingCart($row)
 {
     $html =
-        "<article> 
-                    <h2>$row[naam] </h2>
-                    <img src='./images/$row[afbeelding]' alt='fiets'>
-                    <p>$row[omschrijving]</p>
-                    <p><strong>$row[prijs]</strong></p> 
-                    <p>Voorraad:  $row[voorrad]</p>
-                        <form action=./includes/shoppingcartBewerkenItem.php method='post'>
-                            <input type=hidden id=rowNummer name=rowNummer value=$row[nummer]>
-                            <input type='submit' name=verwijderenUitShoppingCart value=Verwijderen>
-                        </form>
-                </article>";
+        "   <img src='./images/small/$row[afbeelding]' alt='fiets'>
+            <p>$row[omschrijving]</p>
+            <p><strong>$row[prijs]</strong></p> 
+            <p>Voorraad:  $row[voorrad]</p>
+                <form action=./includes/shoppingcartBewerkenItem.php method='post'>
+                    <input type=hidden id=rowNummer name=rowNummer value=$row[nummer]>
+                    <input type='submit' name=verwijderenUitShoppingCart value=Verwijderen>
+                </form>
+         ";
+    $html = makeArticle($row['naam'] ,$html,"itemShoppingCart");
     return $html;
 }
 
@@ -149,24 +175,23 @@ function makeHtmlShoppingCart($itemsShoppingCart)
         }
     }
     $htmlTotalePrijs = makeArticleTotalePrijs($totalePrijs);
-    $htmlButtonShoppingCart = makeButtonShoppingCart();
-    $htmlButtonEmptyShoppingCart = makeButtonEmptyShoppingCart();
+
+    $htmlButtonsShoppingCart = makeButtonShoppingCart();
+    $htmlButtonsShoppingCart .= makeButtonEmptyShoppingCart();
+    $htmlButtonsShoppingCart = makeArticle(null,$htmlButtonsShoppingCart,"button");
 
     $html .= $htmlAfgerekend;
     $html .= $htmlTotalePrijs;
     $html .= $htmlItemsShoppingCart;
-    $html .= $htmlButtonShoppingCart;
-    $html .= $htmlButtonEmptyShoppingCart;
+    $html .= $htmlButtonsShoppingCart;
+    //    $html .= $htmlButtonShoppingCart;
+//    $html .= $htmlButtonEmptyShoppingCart;
 
     return $html;
 }
 
-//$_SESSION['itemsShoppingcart'] = [4, 5, 6, 4];
-//echo(makeButtonShoppingCart());
-
 function makeButtonShoppingCart()
 {
-    //make button that executes shoppingcartAfrekenen.php
     $html =
         "
    <form action=./includes/shoppingcartAfrekenen.php method='post'>
@@ -178,7 +203,6 @@ function makeButtonShoppingCart()
 
 function makeButtonEmptyShoppingCart()
 {
-    //make button that executes shoppingcartBewerkenItem.php
     $html =
         "
    <form action=./includes/shoppingcartBewerkenItem.php method='post'>
@@ -187,35 +211,6 @@ function makeButtonEmptyShoppingCart()
     ";
     return $html;
 }
-
-//function removeItemsFromStock()
-//{
-//    //make connection to DB
-//    try {
-//        $dbh = new PDO(
-//            'mysql:host=localhost;
-//        dbname=webshop',
-//            "root",
-//            "");
-//    } catch (Exception $e) {
-//        echo "Er is iets fout gegaan met de verbinding.";
-//    }
-//    //make sql query to get voorraad from the $_SESSION['itemsShoppingcart']
-//    $dbStatement = $dbh->prepare("SELECT * FROM producten $sqlWhere");
-//    $dbStatement->execute();
-//    $data = $dbStatement;
-//
-//    while ($row = $data->fetch()) {
-//        $html .=
-//            "";
-//    }
-//        //for-loop
-//        // $voorraad = $row[ voorraad]
-//                // $voorraad -= 1;
-//                    //make sql query to set voorraad
-//                        // $sqlQuery = set voorraad = $voorraad where productnummer = $row[productnummer]
-//    //execute $sqlQuery
-//}
 
 function forLoopArray($items, $inputhtml)
 {

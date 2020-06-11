@@ -23,12 +23,14 @@
         position: fixed;
         /*flex-direction: column;*/
     }
+
     .menucontent {
         display: none;
         justify-content: space-around;
         flex-direction: column;
     }
-    nav:focus .menucontent, nav:hover .menucontent  {
+
+    nav:focus .menucontent, nav:hover .menucontent {
         display: flex;
         justify-content: space-around;
         flex-direction: column;
@@ -36,7 +38,8 @@
         position: relative;
         list-style: none;
     }
-    .menucontent > span {  /*menucontent > span ????*/
+
+    .menucontent > span { /*menucontent > span ????*/
         z-index: 2;
         position: relative;
         cursor: pointer;
@@ -49,6 +52,7 @@
         justify-content: flex-start;
         /*flex-wrap: nowrap;*/
     }
+
     .menutitle {
         font-weight: bold;
         font-family: "Arial Black";
@@ -82,9 +86,11 @@
         padding: 0 40px 10px 20px;
         margin: 10px;
     }
+
     .assortiment-menu li:last-of-type {
         border-bottom: none;
     }
+
     header {
         width: 100%;
         margin-top: 10px;
@@ -94,6 +100,7 @@
         display: flex;
         justify-content: center;
     }
+
     .header {
         width: 100%;
         height: 2em;
@@ -103,13 +110,16 @@
         align-items: center;
         margin-top: 26px;
     }
-    .headerbutton{
+
+    .headerbutton {
         background-color: #5995DA;
         border: none;
     }
+
     .headerbutton:active {
         color: darkblue;
     }
+
     a {
         color: cornflowerblue;
         text-decoration: none;
@@ -118,31 +128,37 @@
     a:link, a:hover, a:visited {
         color: darkblue;
     }
+
     main {
         width: 100%;
         display: flex;
-        flex-direction: column ;
+        flex-direction: column;
         /*justify-content: center;*/
         justify-content: space-evenly;
     }
+
     aside {
         order: 1;
         color: darkblue;
         padding-left: 2em;
         margin-bottom: 1em;
     }
+
     footer {
         margin-top: 1em;
 
     }
-    footer > article{
+
+    footer > article {
         border: none;
         margin-top: 0.2em;
         background-color: aliceblue;
     }
+
     .footer h4 {
         border: none;
     }
+
     section {
         order: 2;
         width: 100%;
@@ -152,6 +168,7 @@
         flex-flow: row wrap;
         align-items: flex-start;
     }
+
     article {
         background-color: white;
         border: 2px solid lightblue;
@@ -159,11 +176,21 @@
         min-height: 10em;
         height: auto;
     }
-    article.totalePrijs{
-        width: 90%;
-        min-height: 200px;
+
+    article.totalePrijs {
+        width: 100%;
+        min-height: 100px;
         height: auto;
         padding: 0px 20px 5px 20px;
+    }
+    article.button {
+        width: 100%;
+        min-height: 3em;
+        max-height: 3em;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
     main h1, h2, h3, h4 {
         border: 2px solid cornflowerblue;
@@ -275,10 +302,12 @@
         align-items: center;
         margin-top: 26px;
     }
-    .headerbutton{
+
+    .headerbutton {
         background-color: #5995DA;
         border: none;
     }
+
     .headerbutton:active, .headerbutton:hover {
         color: darkblue;
     }
@@ -291,7 +320,7 @@
         color: white;
     }
 
-    .shoppingCart a:link, a:hover, a:visited, a:active{
+    .shoppingCart a:link, a:hover, a:visited, a:active {
         color: blue;
     }
 
@@ -300,6 +329,7 @@
         display: flex;
         justify-content: space-between;
     }
+
     section {
         width: auto;
         height: auto;
@@ -308,6 +338,7 @@
         flex-flow: row wrap;
         /*align-items: flex-start;*/
     }
+
     article {
         background-color: white;
         margin: 1%;
@@ -319,21 +350,37 @@
         max-height: 500px;
         box-shadow: 10px 10px 5px grey;
     }
-    article.totalePrijs{
-        width: 90%;
-        min-height: 200px;
+    article.itemShoppingCart{
+        min-height: 100px;
+        height: auto;
+    }
+    article.totalePrijs {
+        width: 100%;
+        min-height: 100px;
         height: auto;
         padding: 0px 20px 5px 20px;
     }
-    article.voorwaarden{
+
+    article.voorwaarden {
         width: 90%;
     }
-    article.contactformulier{
+
+    article.contactformulier {
         width: 90%;
+    }
+    article.button {
+        width: 100%;
+        min-height: 3em;
+        max-height: 3em;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
     p {
         margin: 1em 1em 1em 1em;
     }
+
     .keuzemenu {
         width: 20%;
         min-height: 900px;
@@ -343,10 +390,12 @@
         /*order: -1;*/
         align-self: flex-start;
     }
+
     form.winkelwagenbutton {
         background-color: white;
         padding-left: 40%;
     }
+
     .welkom {
         width: 70%;
         height: 100px;
@@ -381,7 +430,6 @@
     /*    height: auto;*/
     /*    border: 1px solid red;*/
     /*}*/
-
     .voorwaarden {
         width: 600px;
         height: auto;
