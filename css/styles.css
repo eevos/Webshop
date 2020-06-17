@@ -146,13 +146,21 @@
 
     footer {
         margin-top: 1em;
-
+        list-style: none;
     }
 
     footer > article {
         border: none;
         margin-top: 0.2em;
         background-color: aliceblue;
+
+    }
+
+    .footer {
+        min-height: 100px;
+        height: auto;
+        max-height: 300px;
+        list-style: none;
     }
 
     .footer h4 {
@@ -183,6 +191,7 @@
         height: auto;
         padding: 0px 20px 5px 20px;
     }
+
     article.button {
         width: 100%;
         min-height: 3em;
@@ -192,6 +201,18 @@
         justify-content: space-evenly;
         align-items: center;
     }
+
+    input[type=button], input[type=submit] {
+        background-color: ghostwhite;
+        color: black;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    input[type=submit]:hover, input[type=submit]:focus {
+        box-shadow: 3px 3px 10px grey;
+    }
+
     main h1, h2, h3, h4 {
         border: 2px solid cornflowerblue;
         border-radius: 5px;
@@ -334,9 +355,10 @@
         width: auto;
         height: auto;
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         flex-flow: row wrap;
-        /*align-items: flex-start;*/
+        align-items: stretch;
+        align-content: stretch;
     }
 
     article {
@@ -350,10 +372,12 @@
         max-height: 500px;
         box-shadow: 10px 10px 5px grey;
     }
-    article.itemShoppingCart{
+
+    article.itemShoppingCart {
         min-height: 100px;
         height: auto;
     }
+
     article.totalePrijs {
         width: 100%;
         min-height: 100px;
@@ -368,6 +392,7 @@
     article.contactformulier {
         width: 90%;
     }
+
     article.button {
         width: 100%;
         min-height: 3em;
@@ -377,14 +402,27 @@
         justify-content: space-evenly;
         align-items: center;
     }
+
+    input[type=button], input[type=submit] {
+        background-color: ghostwhite;
+        color: black;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    input[type=submit]:hover, input[type=submit]:focus {
+        box-shadow: 3px 3px 10px grey;
+    }
+
     p {
         margin: 1em 1em 1em 1em;
     }
 
     .keuzemenu {
         width: 20%;
-        min-height: 900px;
+        min-height: 600px;
         margin: 1%;
+        padding-bottom: 2em;
         height: auto;
 
 
@@ -394,7 +432,7 @@
 
     form.winkelwagenbutton {
         background-color: white;
-        padding-left: 40%;
+        /*padding-left: 40%;*/
     }
 
     .welkom {
@@ -450,25 +488,33 @@
 
     footer {
         width: auto;
-        max-height: 200px;
+        max-height: 300px;
         list-style: none;
 
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
     }
-
     .footer {
-        width: 33%;
+        width: 100%;
         background-color: azure;
         border: none;
-    }
+        list-style: none;
 
+        min-height: 100px;
+        height: auto;
+        max-height: 400px;
+
+        padding: 0em 1em 2em 1em;
+
+    }
     .footer:first-of-type {
         background-color: lightblue;
     }
 
     .footer:last-of-type {
         background-color: lightblue;
+        list-style: none;
+
     }
 }

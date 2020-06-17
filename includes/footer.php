@@ -13,7 +13,7 @@
 
     <article class="footer">
         <p>
-        <li class='date'>© 2019- <?php echo date("Y");?> </li>
+        <li class='date'>© 2019- <?php echo date("Y"); ?> </li>
         <li class='home'><a href="index.php">Home</a></li>
         <li><a href="voorwaarden.php">Voorwaarden</a></li>
         <li><a href="contactformulier.php">Contact</a></li>
@@ -22,8 +22,15 @@
         </p>
     </article>
     <article class="footer">
-        <p>Laatste bestelling:</p>
-<!--        Bestelgeschiedenis?         -->
+        <?php
+        if (!empty($_SESSION['gebruikersnaam'])) {
+            if (!empty(getLaatsteBestellingDB($_SESSION['gebruikersnaam']))) {
+                echo makeArticleLaatsteBestelling(getLaatsteBestellingDB($_SESSION['gebruikersnaam']));
+            }
+        } else {
+            echo "Je hebt nog geen bestellingen gedaan";
+        };
+        ?>
 
     </article>
 </footer>

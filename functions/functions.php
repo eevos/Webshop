@@ -127,12 +127,12 @@ function makeArticleItemShoppingCart($row)
             <p>$row[omschrijving]</p>
             <p><strong>$row[prijs]</strong></p> 
             <p>Voorraad:  $row[voorrad]</p>
-                <form action=./includes/shoppingcartBewerkenItem.php method='post'>
+                <form action=./includes/shoppingcartBewerkenItem.php class='winkelwagenbutton' method='post'>
                     <input type=hidden id=rowNummer name=rowNummer value=$row[nummer]>
                     <input type='submit' name=verwijderenUitShoppingCart value=Verwijderen>
                 </form>
          ";
-    $html = makeArticle($row['naam'] ,$html,"itemShoppingCart");
+    $html = makeArticle($row['naam'], $html, "itemShoppingCart");
     return $html;
 }
 
@@ -178,7 +178,7 @@ function makeHtmlShoppingCart($itemsShoppingCart)
 
     $htmlButtonsShoppingCart = makeButtonShoppingCart();
     $htmlButtonsShoppingCart .= makeButtonEmptyShoppingCart();
-    $htmlButtonsShoppingCart = makeArticle(null,$htmlButtonsShoppingCart,"button");
+    $htmlButtonsShoppingCart = makeArticle(null, $htmlButtonsShoppingCart, "button");
 
     $html .= $htmlAfgerekend;
     $html .= $htmlTotalePrijs;
@@ -194,7 +194,7 @@ function makeButtonShoppingCart()
 {
     $html =
         "
-   <form action=./includes/shoppingcartAfrekenen.php method='post'>
+   <form action=./includes/shoppingcartAfrekenen.php class='winkelwagenbutton' method='post'>
         <input type='submit' name=shoppingcartAfrekenen value=shoppingcartAfrekenen>
     </form>    
     ";
@@ -205,7 +205,7 @@ function makeButtonEmptyShoppingCart()
 {
     $html =
         "
-   <form action=./includes/shoppingcartBewerkenItem.php method='post'>
+   <form action=./includes/shoppingcartBewerkenItem.php class='winkelwagenbutton' method='post'>
         <input type='submit' name=leegmakenShoppingcart value=leegmakenShoppingcart>
     </form>    
     ";
@@ -231,3 +231,97 @@ function removeItemShoppingcart($items, $clickedItem)
     }
     return $items;
 }
+
+//$_SESSION['gebruikersNaam'] = "harry";
+//$_SESSION['itemsShoppingCart'] = [2, 3, 4, 5, 6];
+//session_destroy();
+
+function insertBestellingDB($gebruikersnaam, $items)
+{
+    $serializedItems = serialize($items);
+
+    try {
+        $dbh = new PDO(
+            'mysql:host=localhost;
+        dbname=webshop',
+            "root",
+            "");
+    } catch (Exception $e) {
+        echo "Er is iets fout gegaan met de verbinding.";
+    }
+    $dbStatement = $dbh->prepare(
+        "INSERT INTO bestellingen ( gebruikersnaam, bestellingSerialized)
+                VALUES ( '$gebruikersnaam','$serializedItems') ");
+    $dbStatement->execute();
+}
+
+//insertBestellingDB($_SESSION['gebruikersNaam'], $_SESSION['itemsShoppingCart']);
+
+function getLaatsteBestellingDB($gebruikersnaam)
+{
+    try {
+        $dbh = new PDO(
+            'mysql:host=localhost;
+        dbname=webshop',
+            "root",
+            "");
+    } catch (Exception $e) {
+        echo "Er is iets fout gegaan met de verbinding.";
+    }
+    $dbStatement = $dbh->prepare(
+        "SELECT * FROM bestellingen WHERE gebruikersnaam = '$gebruikersnaam' 
+                AND bestellingId IN 
+                (SELECT max(bestellingId) from bestellingen WHERE gebruikersnaam = '$gebruikersnaam')
+                ");
+    $dbStatement->execute();
+    $data = $dbStatement;
+    while ($row = $data->fetch()) {
+        return unserialize($row['bestellingSerialized']);
+    }
+}
+
+//HAAL BESTElling uit DB
+//var_dump(getLaatsteBestellingDB("susantigoon"));
+
+//maak nu een samenvatting voor de footer.
+function makeArticleLaatsteBestelling($itemsInBestelling)
+{
+    $htmlLaatsteBestelling = "  <h4>Je laatste bestelling:</h4>
+                                <ul class='footer'>";
+    $totalePrijs = 0;
+
+    try {
+        $dbh = new PDO(
+            'mysql:host=localhost;
+        dbname=webshop',
+            "root",
+            "");
+    } catch (Exception $e) {
+        echo "Er is iets fout gegaan met de verbinding.";
+    }
+    foreach ($itemsInBestelling as $itemNummer) {
+        //zoek itemNummer op in db
+        $dbStatement = $dbh->prepare("SELECT * FROM producten WHERE nummer = $itemNummer");
+        $dbStatement->execute();
+        $data = $dbStatement;
+        //ieder itemnummer wordt aan de footer-article toegevoegd
+        while ($row = $data->fetch()) {
+            $htmlLaatsteBestelling .= "
+            <li>
+            $row[naam];
+            </li>
+            ";
+            $totalePrijs = $totalePrijs + $row['prijs'];
+        }
+    }
+
+    $htmlLaatsteBestelling .= "</ul>";
+    $htmlTotalePrijs =  "De totale prijs van je vorige bestelling : € " . $totalePrijs;
+    $htmlLaatsteBestelling .= $htmlTotalePrijs;
+
+    return $htmlLaatsteBestelling;
+}
+
+//var_dump((getLaatsteBestellingDB("harry")));
+//echo makeArticleLaatsteBestelling(getLaatsteBestellingDB("harry"));
+//<img src='./images/small/$row[afbeelding]' alt='fiets'>
