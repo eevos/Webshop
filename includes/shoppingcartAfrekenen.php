@@ -2,10 +2,11 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+include "../functions/functions.php";
 
 //make connection to DB
-$_SESSION['itemsShoppingcart'] = [4, 5, 6, 4];
-echo "ShoppingcartAfrekenen.php wordt aangeroepen";
+//$_SESSION['itemsShoppingcart'] = [4, 5, 6, 4];
+//echo "ShoppingcartAfrekenen.php wordt aangeroepen";
 //echo(var_dump($_SESSION['itemsShoppingcart']));
 
 try {
@@ -42,9 +43,11 @@ for ($i = 0; $i < sizeof($_SESSION['itemsShoppingcart']); $i++) {
         $dbRemoveStatement->execute();
     }
 }
-//echo  "Shopping cart is afgerekend";
-//$_SESSION['test'] = "shoppingcartAfrekenen.php werkt.";
-//$_SESSION['test'] = "Gefeliciteerd! Je winkelwagentje is afgerekend.";
+
+//opslaanBestelling();
+insertBestellingDB($_SESSION['gebruikersnaam'], $_SESSION['itemsShoppingcart']);
+$_SESSION['itemsShoppingcart'] = null;
+
 $_SESSION['afgerekend'] = true;
 
 header("Location: ../shoppingCart.php");
