@@ -1,14 +1,11 @@
 <?php
+//include "header.php";
+include "../functions/functions.php";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include "../functions/functions.php";
 
 //make connection to DB
-//$_SESSION['itemsShoppingcart'] = [4, 5, 6, 4];
-//echo "ShoppingcartAfrekenen.php wordt aangeroepen";
-//echo(var_dump($_SESSION['itemsShoppingcart']));
-
 try {
     $dbh = new PDO(
         'mysql:host=localhost;
@@ -22,9 +19,8 @@ try {
 
 //make sql query to get voorraad from the $_SESSION['itemsShoppingcart']
 $productnummer = null;
-
-for ($i = 0; $i < sizeof($_SESSION['itemsShoppingcart']); $i++) {
-    $productnummer = $_SESSION['itemsShoppingcart'][$i];
+for ($i = 0; $i < sizeof($_SESSION['itemsShoppingCart']); $i++) {
+    $productnummer = $_SESSION['itemsShoppingCart'][$i];
 
     $dbStatement = $dbh->prepare("SELECT * FROM producten WHERE NUMMER = $productnummer");
     $dbStatement->execute();
@@ -32,9 +28,9 @@ for ($i = 0; $i < sizeof($_SESSION['itemsShoppingcart']); $i++) {
 
 //make sql query to adapt voorraad
     while ($row = $data->fetch()) {
-        $voorraad[$i] = $row['voorrad'];
-//        echo $i . " --> " . $row['voorrad'] . " , ";
 
+        $voorraad[$i] = $row['voorrad'];
+//        echo $row['nummer'] . " --> " . $row['voorrad'] . " , ";
         $voorraad[$i] -= 1;
 
         $query = "UPDATE producten set voorrad = $voorraad[$i] where nummer = $productnummer";
@@ -45,9 +41,11 @@ for ($i = 0; $i < sizeof($_SESSION['itemsShoppingcart']); $i++) {
 }
 
 //opslaanBestelling();
-insertBestellingDB($_SESSION['gebruikersnaam'], $_SESSION['itemsShoppingcart']);
-$_SESSION['itemsShoppingcart'] = null;
+//print_r($_SESSION['gebruikersnaam']);
+insertBestellingDB($_SESSION['gebruikersnaam'], $_SESSION['itemsShoppingCart']);
 
+$_SESSION['itemsShoppingCart'] = null;
+$_SESSION['htmlShoppingCart'] = null;
 $_SESSION['afgerekend'] = true;
 
 header("Location: ../shoppingCart.php");

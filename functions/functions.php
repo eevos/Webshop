@@ -3,8 +3,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-//$_SESSION['test'] = null;
-
 
 function makeMainSection($contents)
 {
@@ -107,7 +105,6 @@ function makeArticleItemZoekResultaten($rowNaam, $rowAfbeelding, $rowOmschrijvin
     return $html;
 }
 
-
 function makeArticleTotalePrijs($totalePrijs)
 {
     $html =
@@ -149,9 +146,10 @@ function makeHtmlShoppingCart($itemsShoppingCart)
     $totalePrijs = 0;
     $htmlAfgerekend = null;
     if ($_SESSION['afgerekend'] == true) {
-        $htmlAfgerekend .= makeArticle("Succes! ", "Je hebt afgerekend.", null);
+        $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
         $_SESSION['afgerekend'] = false;
-    }
+        $_SESSION['itemsShoppingCart'] = null;
+    } else {
 
     try {
         $dbh = new PDO(
@@ -184,9 +182,7 @@ function makeHtmlShoppingCart($itemsShoppingCart)
     $html .= $htmlTotalePrijs;
     $html .= $htmlItemsShoppingCart;
     $html .= $htmlButtonsShoppingCart;
-    //    $html .= $htmlButtonShoppingCart;
-//    $html .= $htmlButtonEmptyShoppingCart;
-
+    }
     return $html;
 }
 
@@ -238,6 +234,7 @@ function removeItemShoppingcart($items, $clickedItem)
 
 function insertBestellingDB($gebruikersnaam, $items)
 {
+
     $serializedItems = serialize($items);
 
     try {
@@ -281,7 +278,7 @@ function getLaatsteBestellingDB($gebruikersnaam)
 }
 
 //HAAL BESTElling uit DB
-//var_dump(getLaatsteBestellingDB("susantigoon"));
+//var_dump(getLaatsteBestellingDB("anton"));
 
 //maak nu een samenvatting voor de footer.
 function makeArticleLaatsteBestelling($itemsInBestelling)
