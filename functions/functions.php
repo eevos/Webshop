@@ -4,6 +4,69 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+class Database
+{
+    private static $init = FALSE;
+    public static $conn;
+
+    public static function initialize()
+    {
+            self::$init = TRUE;
+            self::$conn = new PDO('mysql:host=localhost; dbname=webshop',"root", "");
+    }
+}
+function makeHtmlShoppingCart($itemsShoppingCart)
+{
+    $html = "";
+    $htmlItemsShoppingCart = "";
+    $htmlButtonShoppingCart = "";
+    $htmlButtonEmptyShoppingCart = "";
+    $totalePrijs = 0;
+    $htmlAfgerekend = null;
+    if ($_SESSION['afgerekend'] == true) {
+        $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
+        $_SESSION['afgerekend'] = false;
+        $_SESSION['itemsShoppingCart'] = null;
+    } else {
+
+//    try {
+//        $dbh = new PDO(
+//            'mysql:host=localhost;
+//        dbname=webshop',
+//            "root",
+//            "");
+//    } catch (Exception $e) {
+//        echo "Er is iets fout gegaan met de verbinding.";
+//    }
+
+        foreach ($itemsShoppingCart as $itemNummer) {
+            //zoek itemNummer op in db
+            Database::initialize();
+
+            $dbStatement = Database::$conn->prepare("SELECT * FROM producten WHERE nummer = $itemNummer");
+            $dbStatement->execute();
+            $data = $dbStatement;
+            //ieder itemnummer stop je in een article
+            while ($row = $data->fetch()) {         //while hoeft niet bij 1 itemnummer
+                $totalePrijs = $totalePrijs + $row['prijs'];
+                $htmlItemsShoppingCart .= makeArticleItemShoppingCart($row);
+            }
+        }
+        $htmlTotalePrijs = makeArticleTotalePrijs($totalePrijs);
+
+        $htmlButtonsShoppingCart = makeButtonShoppingCart();
+        $htmlButtonsShoppingCart .= makeButtonEmptyShoppingCart();
+        $htmlButtonsShoppingCart = makeArticle(null, $htmlButtonsShoppingCart, "button");
+
+        $html .= $htmlAfgerekend;
+        $html .= $htmlTotalePrijs;
+        $html .= $htmlItemsShoppingCart;
+        $html .= $htmlButtonsShoppingCart;
+    }
+    return $html;
+}
+
+
 function makeMainSection($contents)
 {
     $html = "<main><section>$contents</section></main>";
@@ -135,55 +198,6 @@ function makeArticleItemShoppingCart($row)
 
 if (!isset($_SESSION['afgerekend'])) {
     $_SESSION['afgerekend'] = null;
-}
-
-function makeHtmlShoppingCart($itemsShoppingCart)
-{
-    $html = "";
-    $htmlItemsShoppingCart = "";
-    $htmlButtonShoppingCart = "";
-    $htmlButtonEmptyShoppingCart = "";
-    $totalePrijs = 0;
-    $htmlAfgerekend = null;
-    if ($_SESSION['afgerekend'] == true) {
-        $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
-        $_SESSION['afgerekend'] = false;
-        $_SESSION['itemsShoppingCart'] = null;
-    } else {
-
-    try {
-        $dbh = new PDO(
-            'mysql:host=localhost; 
-        dbname=webshop',
-            "root",
-            "");
-    } catch (Exception $e) {
-        echo "Er is iets fout gegaan met de verbinding.";
-    }
-
-    foreach ($itemsShoppingCart as $itemNummer) {
-        //zoek itemNummer op in db
-        $dbStatement = $dbh->prepare("SELECT * FROM producten WHERE nummer = $itemNummer");
-        $dbStatement->execute();
-        $data = $dbStatement;
-        //ieder itemnummer stop je in een article
-        while ($row = $data->fetch()) {         //while hoeft niet bij 1 itemnummer
-            $totalePrijs = $totalePrijs + $row['prijs'];
-            $htmlItemsShoppingCart .= makeArticleItemShoppingCart($row);
-        }
-    }
-    $htmlTotalePrijs = makeArticleTotalePrijs($totalePrijs);
-
-    $htmlButtonsShoppingCart = makeButtonShoppingCart();
-    $htmlButtonsShoppingCart .= makeButtonEmptyShoppingCart();
-    $htmlButtonsShoppingCart = makeArticle(null, $htmlButtonsShoppingCart, "button");
-
-    $html .= $htmlAfgerekend;
-    $html .= $htmlTotalePrijs;
-    $html .= $htmlItemsShoppingCart;
-    $html .= $htmlButtonsShoppingCart;
-    }
-    return $html;
 }
 
 function makeButtonShoppingCart()

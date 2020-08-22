@@ -8,8 +8,6 @@ if (session_status() == PHP_SESSION_NONE) {
 //header("Cache-Control: post-check=0, pre-check=0", false);
 //header("Pragma: no-cache");
 
-$_SESSION['test'].="test   :   ";
-
 ?>
     <main>
         <section>
@@ -26,7 +24,6 @@ $_SESSION['test'].="test   :   ";
                 } else {
                     echo makeArticle("Winkelwagen","Je winkelwagentje is nog leeg.", null);
 
-                    echo print_r($_SESSION['test']);
                 }
             }
             ?>
