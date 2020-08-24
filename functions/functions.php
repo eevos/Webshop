@@ -17,18 +17,11 @@ class Database
 }
 function makeHtmlShoppingCart($itemsShoppingCart)
 {
-    $html = "";
-    $htmlItemsShoppingCart = "";
-    $htmlButtonShoppingCart = "";
-    $htmlButtonEmptyShoppingCart = "";
-    $totalePrijs = 0;
-    $htmlAfgerekend = null;
     if ($_SESSION['afgerekend'] == true) {
         $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
         $_SESSION['afgerekend'] = false;
         $_SESSION['itemsShoppingCart'] = null;
     } else {
-
 //    try {
 //        $dbh = new PDO(
 //            'mysql:host=localhost;
@@ -38,33 +31,33 @@ function makeHtmlShoppingCart($itemsShoppingCart)
 //    } catch (Exception $e) {
 //        echo "Er is iets fout gegaan met de verbinding.";
 //    }
-
+        $htmlItemsShoppingCart = "";
+        $totalePrijs = 0;
         foreach ($itemsShoppingCart as $itemNummer) {
             //zoek itemNummer op in db
             Database::initialize();
-
             $dbStatement = Database::$conn->prepare("SELECT * FROM producten WHERE nummer = $itemNummer");
             $dbStatement->execute();
             $data = $dbStatement;
+
             //ieder itemnummer stop je in een article
             while ($row = $data->fetch()) {         //while hoeft niet bij 1 itemnummer
                 $totalePrijs = $totalePrijs + $row['prijs'];
                 $htmlItemsShoppingCart .= makeArticleItemShoppingCart($row);
             }
         }
-        $htmlTotalePrijs = makeArticleTotalePrijs($totalePrijs);
 
-        $htmlButtonsShoppingCart = makeButtonShoppingCart();
-        $htmlButtonsShoppingCart .= makeButtonEmptyShoppingCart();
-        $htmlButtonsShoppingCart = makeArticle(null, $htmlButtonsShoppingCart, "button");
-
-        $html .= $htmlAfgerekend;
-        $html .= $htmlTotalePrijs;
+        $html = makeArticleTotalePrijs($totalePrijs);
         $html .= $htmlItemsShoppingCart;
-        $html .= $htmlButtonsShoppingCart;
+        $html .= makeArticle(
+            null,
+            makeButtonShoppingCart() . " " . makeButtonEmptyShoppingCart(),
+            "button");
     }
     return $html;
 }
+//$_SESSION['afgerekend']=false;
+//echo makeHtmlShoppingCart([1,2,3,4]);
 
 
 function makeMainSection($contents)

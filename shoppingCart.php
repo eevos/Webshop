@@ -19,11 +19,9 @@ if (session_status() == PHP_SESSION_NONE) {
             } else {
                 if (!empty($_SESSION['itemsShoppingCart'])) {
                     echo makeArticle(null,makeLink("assortiment.php", "Terug naar assortiment"),"button");
-                    $_SESSION['htmlShoppingCart'] = makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
-                    echo $_SESSION['htmlShoppingCart'];
+                    echo makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
                 } else {
                     echo makeArticle("Winkelwagen","Je winkelwagentje is nog leeg.", null);
-
                 }
             }
             ?>
