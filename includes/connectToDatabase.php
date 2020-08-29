@@ -25,13 +25,3 @@ try {
 }
 
 
-//try {
-//    $handler = new PDO(
-//        'mysql:host=localhost; dbname=u62652p63191_edwinvos',
-//        'u62652p63191_root',
-//        'IlJeIBop');
-//    $handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//} catch(PDOException $e){
-//    echo $e->getMessage();
-//    die();
-//}

@@ -15,11 +15,6 @@ class Database
 }
 function makeHtmlShoppingCart($itemsShoppingCart)
 {
-//    if ($_SESSION['afgerekend'] == true) {
-//        $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
-//        $_SESSION['afgerekend'] = false;
-//        $_SESSION['itemsShoppingCart'] = null;
-//    } else {
         $htmlItemsShoppingCart = "";
         $totalePrijs = 0;
         foreach ($itemsShoppingCart as $itemNummer) {
@@ -44,8 +39,6 @@ function makeHtmlShoppingCart($itemsShoppingCart)
 //    }
     return $html;
 }
-//$_SESSION['afgerekend']=false;
-//echo makeHtmlShoppingCart([1,2,3,4,5,6,7]);
 
 function makeMainSection($contents)
 {
@@ -144,7 +137,6 @@ function makeArticleItemZoekResultaten($rowNaam, $rowAfbeelding, $rowOmschrijvin
                     </form>
             </article>";
     }
-//    $html =
     return $html;
 }
 
