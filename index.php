@@ -7,7 +7,7 @@ $html =
     [
         ["htmlTitle" => "Welkom!",
             "htmlContents" => "Het is vandaag " . date("l") . ", " . date("d M Y") . ". <br>" .
-                            "Zoek door ons assortiment met het zoekscherm of via de knop 'assortiment'."],
+                            "Wil je een inlognaam? Neem dan contact op met E.V."],
         ["htmlTitle" => "Assortiment",
             "htmlContents" => makeLink("assortiment.php", "Klik hier om te zoeken in het assortiment.")],
         ["htmlTitle" => "Voorwaarden",

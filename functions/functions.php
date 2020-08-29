@@ -1,36 +1,25 @@
 <?php
-//session_destroy();
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 class Database
 {
     private static $init = FALSE;
     public static $conn;
-
     public static function initialize()
     {
-            self::$init = TRUE;
-            self::$conn = new PDO('mysql:host=localhost; dbname=webshop',"root", "");
+        self::$init = TRUE;
+        self::$conn = new PDO('mysql:host=localhost; dbname=webshop',"root", "");
     }
 }
 function makeHtmlShoppingCart($itemsShoppingCart)
 {
-    if ($_SESSION['afgerekend'] == true) {
-        $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
-        $_SESSION['afgerekend'] = false;
-        $_SESSION['itemsShoppingCart'] = null;
-    } else {
-//    try {
-//        $dbh = new PDO(
-//            'mysql:host=localhost;
-//        dbname=webshop',
-//            "root",
-//            "");
-//    } catch (Exception $e) {
-//        echo "Er is iets fout gegaan met de verbinding.";
-//    }
+//    if ($_SESSION['afgerekend'] == true) {
+//        $html = makeArticle("Succes! ", "Je hebt afgerekend.", null);
+//        $_SESSION['afgerekend'] = false;
+//        $_SESSION['itemsShoppingCart'] = null;
+//    } else {
         $htmlItemsShoppingCart = "";
         $totalePrijs = 0;
         foreach ($itemsShoppingCart as $itemNummer) {
@@ -46,19 +35,17 @@ function makeHtmlShoppingCart($itemsShoppingCart)
                 $htmlItemsShoppingCart .= makeArticleItemShoppingCart($row);
             }
         }
-
         $html = makeArticleTotalePrijs($totalePrijs);
         $html .= $htmlItemsShoppingCart;
         $html .= makeArticle(
             null,
             makeButtonShoppingCart() . " " . makeButtonEmptyShoppingCart(),
             "button");
-    }
+//    }
     return $html;
 }
 //$_SESSION['afgerekend']=false;
-//echo makeHtmlShoppingCart([1,2,3,4]);
-
+//echo makeHtmlShoppingCart([1,2,3,4,5,6,7]);
 
 function makeMainSection($contents)
 {

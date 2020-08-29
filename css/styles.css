@@ -30,7 +30,7 @@
         flex-direction: column;
     }
 
-    nav:focus .menucontent, nav:hover .menucontent {
+    nav:focus .menucontent, nav:active .menucontent, nav:hover .menucontent {
         display: flex;
         justify-content: space-around;
         flex-direction: column;

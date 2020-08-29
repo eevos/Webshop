@@ -1,12 +1,9 @@
 <?php
 include "includes/header.php";
 include "functions/functions.php";
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();}
-
-//header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-//header("Cache-Control: post-check=0, pre-check=0", false);
-//header("Pragma: no-cache");
 
 ?>
     <main>
@@ -17,11 +14,17 @@ if (session_status() == PHP_SESSION_NONE) {
                         "Probleem","Je bent niet ingelogd. Log in om verder te gaan en je winkelwagen te vullen.",
                         null);
             } else {
-                if (!empty($_SESSION['itemsShoppingCart'])) {
-                    echo makeArticle(null,makeLink("assortiment.php", "Terug naar assortiment"),"button");
-                    echo makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
-                } else {
+                if (empty($_SESSION['itemsShoppingCart'])&& !$_SESSION['afgerekend'])  {
                     echo makeArticle("Winkelwagen","Je winkelwagentje is nog leeg.", null);
+                }
+                if (!empty($_SESSION['itemsShoppingCart']) && !$_SESSION['afgerekend']) {
+                    echo makeArticle(null, makeLink("assortiment.php", "Terug naar assortiment"), "button");
+                    echo makeHtmlShoppingCart($_SESSION['itemsShoppingCart']);
+                    echo "winkelwagen";
+                }
+                if ($_SESSION['afgerekend'] ||(empty($_SESSION['itemsShoppingCart'])&& $_SESSION['afgerekend'])) {
+                    echo makeArticle("Succes!", "Je hebt afgerekend!", null);
+                    $_SESSION['afgerekend'] = false;
                 }
             }
             ?>

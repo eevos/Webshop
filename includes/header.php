@@ -13,13 +13,13 @@
 
 <div class="menuheader">
     <nav>
-        <p> <a href="" class="menutitle">Menu</a></p>
+        <p class="menutitle">Menu</p>
         <ul class="menucontent">
             <div class='logo'>
-                <a href="index.php"><img src="images/small/logo.png" alt="logofiets"/> </a>
+                <img src="images/small/logo.png" alt="logofiets"/>
             </div>
             <li class='home'><a href="index.php">Home</a></li>
-            <li class='assortiment'><a href="assortiment.php"><span>Assortiment &#x25BE</span></a>
+            <li class='assortiment'><span>Assortiment &#x25BE</span>
                 <ul class="assortiment-menu">
                     <form action="./includes/zoekResultaten.php">
                         <li><input type="submit" class= "headerbutton" name="typeFiets" value="kinderfietsen"></li>

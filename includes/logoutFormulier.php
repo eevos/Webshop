@@ -1,12 +1,15 @@
 <?php
 include "./functions/functions.php";
 
-$contents = $_SESSION['welkomstBericht'];
+$contents = "Klik hieronder om uit te loggen";
 $contents .= " <form action=\"includes/logoutSubmit.php\" method=\"post\">
                 <button type=\"submit\" name=\"logoutSubmit\">
                     Logout
                 </button>";
 
-echo makeMainSection(makeArticle("Logout", $contents, null))
+echo makeMainSection(makeArticle(
+    "Logout",
+    $contents,
+    null))
 
 ?>

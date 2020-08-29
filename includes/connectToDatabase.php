@@ -1,4 +1,18 @@
 <?php
+
+//class Database
+//{
+//    private static $init = FALSE;
+//    public static $conn;
+//
+//    public static function initialize()
+//    {
+//        self::$init = TRUE;
+//        self::$conn = new PDO('mysql:host=localhost; dbname=webshop',"root", "");
+//    }
+//}
+//Database::initialize();
+
 try {
     $dbh = new PDO(
         'mysql:host=localhost;
