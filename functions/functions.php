@@ -69,6 +69,23 @@ function makeLink($location, $omschrijving)
     return $html;
 }
 
+function makeTitle($title){
+    $html = "<h1>$title</h1>";
+    return $html;
+}
+function makeListItems($items){
+    for ($i = 0; $i < sizeof($items); $i++){
+         makeListItem($items[$i]);
+    }
+}
+
+function makeListItem($item){
+    $html = "<li>$item</li><br>";
+    return $html;
+}
+
+
+
 function fillIndex($html)
 {
     $htmlArticles = "";

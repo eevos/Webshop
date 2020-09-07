@@ -22,14 +22,14 @@
             <li class='assortiment'><span>Assortiment &#x25BE</span>
                 <ul class="assortiment-menu">
                     <form action="./includes/zoekResultaten.php">
-                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="kinderfietsen"></li>
-                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="damesfietsen"></li>
-                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="herenfietsen"></li>
-                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="elektrisch"></li>
-                        <li><input type="submit" class= "headerbutton" name="typeFiets" value="accessoires"></li>
-                        <li><input type="submit" class= "headerbutton" name="prijs" value=">500"></li>
-                        <li><input type="submit" class= "headerbutton" name="prijs" value="<500"></li>
-                        <li><input type="submit" class= "headerbutton" name="voorraad" value="op voorraad"></li>
+                        <li><input type="submit" class="headerbutton" name="typeFiets" value="kinderfietsen"></li>
+                        <li><input type="submit" class="headerbutton" name="typeFiets" value="damesfietsen"></li>
+                        <li><input type="submit" class="headerbutton" name="typeFiets" value="herenfietsen"></li>
+                        <li><input type="submit" class="headerbutton" name="typeFiets" value="elektrisch"></li>
+                        <li><input type="submit" class="headerbutton" name="typeFiets" value="accessoires"></li>
+                        <li><input type="submit" class="headerbutton" name="prijs" value=">500"></li>
+                        <li><input type="submit" class="headerbutton" name="prijs" value="<500"></li>
+                        <li><input type="submit" class="headerbutton" name="voorraad" value="op voorraad"></li>
                     </form>
                 </ul>
             </li>
@@ -45,6 +45,9 @@
                     }
                     ?>
                 </a>
+            <?php if (isset($_SESSION['gebruikersnaam']) && $_SESSION['gebruikersnaam'] == "marjo"): ?>
+            <li><a href="./test.php">Test</a></li>
+            <?php endif; ?>
             </li>
         </ul>
     </nav>
