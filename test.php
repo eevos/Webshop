@@ -33,26 +33,17 @@ if (isset($_SESSION['gebruikersnaam']) && $_SESSION['gebruikersnaam'] == "marjo"
                 <form action="test.php" class='' method='post'>
                     <input type='submit' name=leesKrant value=Lees>
                 </form>
-                <p>hieronder verschijnt leesKrant.php</p>
-
-                <?php
-                if (isset($_POST['leesKrant'])) {
-                    echo file_get_contents("http://www.nu.nl");
-                }
-
-                ?>
-
-
-                <!--                --><? // if (!isset($_SESSION['krant'])){
-                //                    echo "leesKrant.php";
-                //                    echo $_SESSION['krant'];
-                //                    $_SESSION['krant']=null;
-                //                }
-                //
-                ?>
-
-
             </article>
+
+            <?php
+
+            if (isset($_POST['leesKrant'])) {
+                $url = "https://www.volkskrant.nl/nieuws";
+                echo makeArticle("$url ", leesKrant($url), "artikelen");
+            }
+            $_POST['leesKrant'] = null;
+            ?>
+
         </section>
     </main>
 

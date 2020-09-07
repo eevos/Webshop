@@ -1,27 +1,24 @@
 <?php
-include "functions.php";
+//include "functions.php";
 
-function leesKrant()
+function leesKrant($url)
 {
-        scanTitles();
-
+        return scanTitles($url);
 }
-$urlToScan = "https://www.volkskrant.nl/nieuws";
-scanTitles($urlToScan);
 
 function scanTitles($url)
 {
     $contentsAsString = getRawHtml($url);
     $stringsWithEnd = discardFrontHtml($contentsAsString);
-    echo "we hebben " . sizeof($stringsWithEnd) . " titles voor je gevonden: ";
-    echo cleanStrings($stringsWithEnd);
+//    echo "we hebben " . sizeof($stringsWithEnd) . " titles voor je gevonden: ";
+    return cleanStrings($stringsWithEnd);
 
 }
 
 function cleanStrings($stringsWithEnd){
     $html="";
     for ($i = 1; $i< sizeof($stringsWithEnd); $i++) {
-        $html .= cleanStringToTitle($stringsWithEnd[$i]);
+        $html .= makeListItem(cleanStringToTitle($stringsWithEnd[$i]));
     }
     return $html;
 }

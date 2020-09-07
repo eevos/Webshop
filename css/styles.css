@@ -495,6 +495,12 @@
         flex-wrap: nowrap;
         flex-direction: row;
     }
+    .artikelen {
+        width: 100%;
+        height: auto;
+        max-height: 2000px;
+        padding-left: 2em;
+    }
     .footer {
         width: 100%;
         background-color: azure;
