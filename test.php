@@ -28,7 +28,7 @@ if (isset($_SESSION['gebruikersnaam']) && $_SESSION['gebruikersnaam'] == "marjo"
             </article>
 
             <article>
-                <h1>Doornemen krantenkoppen</h1>
+                <h1>Doornemen krantenkoppen Volkskrant</h1>
                 <p>Druk op deze knop en zie de krantenkoppen verschijnen die vandaag in het nieuws zijn.</p>
                 <form action="test.php" class='' method='post'>
                     <input type='submit' name=leesKrant value=Lees>
@@ -42,6 +42,20 @@ if (isset($_SESSION['gebruikersnaam']) && $_SESSION['gebruikersnaam'] == "marjo"
                 echo makeArticle("$url ", leesKrant($url), "artikelen");
             }
             $_POST['leesKrant'] = null;
+            ?>
+
+            <article>
+                <form action="solax.php" method="post">
+                    Token: <input type="text" name="token"/><br/>
+                    <input type="submit" name="submitSolax" value="Submit me!"/>
+                </form>
+            </article>
+            <?php
+            if (isset($_POST['submitSolax'])) {
+                echo "test solax";
+                echo $_SESSION["getSolaxInfo"];
+                $_SESSION["getSolaxInfo"] = null;
+            }
             ?>
 
         </section>

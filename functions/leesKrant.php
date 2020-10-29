@@ -1,36 +1,44 @@
 <?php
-//include "functions.php";
 
 function leesKrant($url)
 {
-        return scanTitles($url);
+    $arrayOfTitles = extractTitles($url);
+    return makeHtmlFromTitlesIn($arrayOfTitles);
+
+}
+function makeHtmlFromTitlesIn($array){
+    $html = "";
+    foreach ($array as $item){
+        $html .= $item;
+    }
+    return $html;
 }
 
-function scanTitles($url)
+
+function extractTitles($url)
 {
     $contentsAsString = getRawHtml($url);
     $stringsWithEnd = discardFrontHtml($contentsAsString);
-//    echo "we hebben " . sizeof($stringsWithEnd) . " titles voor je gevonden: ";
-    return cleanStrings($stringsWithEnd);
-
+    $cleanListItems = cleanStringsAndMakeListItem($stringsWithEnd);
+    return $cleanListItems;
 }
 
-function cleanStrings($stringsWithEnd){
-    $html="";
+function cleanStringsAndMakeListItem($stringsWithEnd){
+    $array=[];
     for ($i = 1; $i< sizeof($stringsWithEnd); $i++) {
-        $html .= makeListItem(cleanStringToTitle($stringsWithEnd[$i]));
+        $array[$i-1] = makeListItem(cleanStringToTitle($stringsWithEnd[$i]));
     }
-    return $html;
+    return $array;
 }
 function cleanStringToTitle($string){
     $title = explode("data-gtm=", $string);
     return $title[0];
 }
 
-
 function discardFrontHtml($contentsAsString){
     return explode("aria-label=", $contentsAsString);
 }
+
 function getRawHtml($url){
     $c = curl_init();
     curl_setopt($c, CURLOPT_URL,$url);

@@ -217,7 +217,7 @@ function forLoopArray($items, $inputhtml)
     for ($i = 0; $i < count($items); $i++) {
         $inputhtml .= $i . " => " . $items[$i] . "<br>";
     }
-    $outputhtml = $inputhtml;
+    $outputhtml .= $inputhtml;
     return $outputhtml;
 }
 
