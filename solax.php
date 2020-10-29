@@ -5,7 +5,7 @@ include "functions/leesKrant.php";
 //$token = $_POST['token'];
 
 
-$token = "202008140530470298107810";
+$token = "-";
 
 $url =
     "https://www.solaxcloud.com:9443/proxy/api/getRealtimeInfo.do?tokenId=" . $token . "&sn=SPMH55R28K";
@@ -23,10 +23,4 @@ $json = visitUrl($url);
 $array = json_decode($json, true);
 print_r($array["result"]);
 echo $array["result"]["inverterStatus"];
-//var_dump($array);
 
-
-
-//
-//$_SESSION["getSolaxInfo"] = json_decode(getRawHtml($url));
-//echo $_SESSION["getSolaxInfo"];
